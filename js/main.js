@@ -123,8 +123,18 @@ setLang(LANG);
 // ---- Equipo (modales) ----
 var TEAM = {
   mauricio: { name: 'Mauricio Rodriguez', initial: 'M', role_en: 'CEO', role_es: 'CEO',
-    bio_en: 'Founder & CEO of Aypex, and a QA Automation Engineer with 10+ years shipping reliable software across web, mobile and backend in high-stakes environments — fintech, biometric identity, and government and industrial systems. He treats quality as an engineering discipline: reading code diffs, tracing affected paths and building AI-driven, white-box test pipelines with full evidence traceability.\n\nHis path began at the Government of the City of Buenos Aires, automating and validating financial and regulatory systems (Java · JavaScript · Zephyr · Jira) under strict compliance — and runs through Ualá (QA automation at fintech scale), Valida (a dual-layer framework scanning 200+ requests per run for security flaws and exposed PII) and Clue Insights (AI-driven, white-box QA on cross-platform industrial software). At Aypex he channels that same rigor into everything the team ships.',
-    bio_es: 'Fundador y CEO de Aypex, e ingeniero de QA Automation con más de 10 años entregando software confiable en web, mobile y backend en entornos exigentes — fintech, identidad biométrica y sistemas gubernamentales e industriales. Trata la calidad como una disciplina de ingeniería: lee los diffs de código, rastrea los caminos afectados y construye pipelines de testing white-box asistidos por IA con trazabilidad total de la evidencia.\n\nSu recorrido comenzó en el Gobierno de la Ciudad de Buenos Aires, automatizando y validando sistemas financieros y regulatorios (Java · JavaScript · Zephyr · Jira) bajo estricto cumplimiento normativo — y sigue por Ualá (automatización de QA a escala fintech), Valida (un framework de doble capa que escanea 200+ requests por corrida buscando vulnerabilidades y PII expuesta) y Clue Insights (QA white-box asistido por IA sobre software industrial multiplataforma). En Aypex canaliza ese mismo rigor en todo lo que construye el equipo.' },
+    bio_en: 'Founder & CEO of Aypex and a QA Automation Engineer with 10+ years shipping reliable software across web, mobile and backend in high-stakes environments — fintech, biometric identity, government and industrial systems. He treats quality as an engineering discipline: reading code diffs, tracing affected paths and building AI-driven, white-box test pipelines with full evidence traceability.',
+    bio_es: 'Fundador y CEO de Aypex e ingeniero de QA Automation con más de 10 años entregando software confiable en web, mobile y backend en entornos exigentes — fintech, identidad biométrica, gobierno e industrial. Trata la calidad como una disciplina de ingeniería: lee los diffs de código, rastrea los caminos afectados y construye pipelines de testing white-box asistidos por IA con trazabilidad total de la evidencia.',
+    skills: ['White-Box Testing', 'Python', 'Selenium', 'Appium', 'Playwright', 'Pytest', 'API Testing', 'Security Testing', 'AI Agents', 'Claude Workflows', 'XRAY', 'Jira', 'React Native', 'CI/CD', 'Fintech', 'Biometric Identity'],
+    timeline: [
+      { c: 'Clue Insights', p: '2025 — Now', r_en: 'AI-Enhanced QA Engineer', r_es: 'AI-Enhanced QA Engineer', d_en: 'AI-driven, white-box QA across web, mobile & APIs for cross-platform industrial software (US).', d_es: 'QA white-box asistido por IA en web, mobile y APIs para software industrial multiplataforma (EE.UU.).' },
+      { c: 'Valida', p: '2025 — Now', r_en: 'QA Automation · Biometric & Security', r_es: 'QA Automation · Biometría y Seguridad', d_en: 'Dual-layer framework (pytest + Playwright, ~480 tests); 200+ requests scanned per run for security flaws & exposed PII.', d_es: 'Framework de doble capa (pytest + Playwright, ~480 tests); 200+ requests escaneados por corrida por vulnerabilidades y PII expuesta.' },
+      { c: 'Ualá', p: '2021 — 2025', r_en: 'QA Engineer · Payments', r_es: 'QA Engineer · Pagos', d_en: 'QA automation at fintech scale (Selenium/Appium · AWS · CI/CD); merchant onboarding to QR payment networks.', d_es: 'Automatización de QA a escala fintech (Selenium/Appium · AWS · CI/CD); alta de comercios a redes de pago QR.' },
+      { c: 'Opratel', p: '2019 — 2021', r_en: 'QA Automation Lead', r_es: 'QA Automation Lead', d_en: 'Defined QA strategy; built custom Python automation frameworks; trained the team.', d_es: 'Definí la estrategia de QA; construí frameworks de automatización en Python; formé al equipo.' },
+      { c: 'Gobierno de la Ciudad de Buenos Aires', p: '2017 — 2019', r_en: 'QA Automation Engineer', r_es: 'QA Automation Engineer', d_en: 'Automated & validated financial/regulatory systems (Java · JavaScript · Zephyr) under strict compliance.', d_es: 'Automaticé y validé sistemas financieros y regulatorios (Java · JavaScript · Zephyr) bajo estricto cumplimiento.' },
+      { c: 'Freelance QA', p: '2017 — 2019', r_en: 'QA · CRM / ERP', r_es: 'QA · CRM / ERP', d_en: 'Manual QA for CRM/ERP products (incl. Kaizen).', d_es: 'QA manual para productos CRM/ERP (incl. Kaizen).' },
+      { c: 'Consilium Service', p: '2016 — 2019', r_en: 'Software Tester QA', r_es: 'Software Tester QA', d_en: 'Where it all started — QA testing on CRM software.', d_es: 'Donde empezó todo — testing QA sobre software CRM.' }
+    ] },
   ezequiel: { name: 'Ezequiel Rodriguez', initial: 'E', role_en: 'CTO', role_es: 'CTO',
     bio_en: 'CTO and engineering lead at Aypex. Ezequiel turns product vision into scalable, reliable architecture across web and mobile, defining the technical direction, standards and stack behind everything the team builds.',
     bio_es: 'CTO y líder de ingeniería de Aypex. Ezequiel convierte la visión de producto en arquitectura escalable y confiable en web y mobile, definiendo la dirección técnica, los estándares y el stack detrás de todo lo que construye el equipo.' },
@@ -138,6 +148,16 @@ function openTeam(id) {
   document.getElementById('tmName').textContent = t.name;
   document.getElementById('tmRole').textContent = es ? t.role_es : t.role_en;
   document.getElementById('tmBio').textContent = es ? t.bio_es : t.bio_en;
+  var extra = '';
+  if (t.skills && t.skills.length) {
+    extra += '<div class="tm-h">Skills</div><div class="tm-chips">' + t.skills.map(function (s) { return '<span>' + s + '</span>'; }).join('') + '</div>';
+  }
+  if (t.timeline && t.timeline.length) {
+    extra += '<div class="tm-h">' + (es ? 'Trayectoria' : 'Journey') + '</div><ul class="tm-time">' + t.timeline.map(function (j) {
+      return '<li><span class="tm-per">' + j.p + '</span><b>' + j.c + '</b><i>' + (es ? j.r_es : j.r_en) + '</i><p>' + (es ? j.d_es : j.d_en) + '</p></li>';
+    }).join('') + '</ul>';
+  }
+  var ex = document.getElementById('tmExtra'); if (ex) ex.innerHTML = extra;
   var av = document.getElementById('tmAvatar');
   av.textContent = ''; av.style.backgroundImage = '';
   var src = 'assets/team/' + id + '.jpg';
