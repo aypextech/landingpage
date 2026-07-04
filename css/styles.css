@@ -254,6 +254,64 @@ section.block::before{content:'';position:absolute;top:0;left:50%;transform:tran
 .cta.light .btn.solid:hover{filter:brightness(1.25);}
 .cta.light::before{background:linear-gradient(90deg,transparent,rgba(10,11,16,.25) 30%,var(--accent) 50%,var(--gold) 70%,transparent);opacity:.55;}
 
+/* ============================================================
+   Tema CLARO para secciones (.block.light) — corta el negro
+   con blanco + acentos azul y dorado. Alternancia elegante.
+   ============================================================ */
+.block.light{background:linear-gradient(170deg,#f6f7fb,#eaecf3);color:#20222b;}
+.block.light .center h2,.block.light h2,.block.light h3,.block.light h4{color:#0a0b10;}
+.block.light .center p.lead,.block.light p{color:#565b6b;}
+.block.light .eyebrow{color:#b78a3c;}
+.block.light .grad{background:linear-gradient(120deg,#2f4a9e,#6c8cff 58%,#b78a3c);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.block.light::before{background:linear-gradient(90deg,transparent,rgba(10,11,16,.22) 30%,var(--accent) 50%,var(--gold) 70%,transparent);opacity:.6;}
+.block.light .orb{mix-blend-mode:normal;opacity:.55;}
+/* Cards */
+.block.light .ccard{background:#fff;border-color:rgba(12,22,45,.10);box-shadow:0 12px 34px rgba(20,30,60,.07);}
+.block.light .ccard h3{color:#0a0b10;} .block.light .ccard p{color:#565b6b;}
+.block.light .ccard .num{color:#9aa0b4;}
+.block.light .ccard .c-ico{background:#eef1f8;border-color:rgba(12,22,45,.10);color:#2f4a9e;}
+.block.light .ccard:hover{box-shadow:0 28px 58px rgba(20,30,60,.16);}
+.block.light .ccard:hover .c-ico{color:var(--accent);border-color:rgba(108,140,255,.4);}
+.block.light .ccard::before{background:linear-gradient(120deg,#2f4a9e,#b78a3c);}
+/* Steps */
+.block.light .step{background:#fff;border-color:rgba(12,22,45,.10);}
+.block.light .step h3{color:#0a0b10;} .block.light .step p{color:#565b6b;} .block.light .step .s-n{color:#b0b5c4;}
+.block.light .step:hover{border-color:rgba(47,74,158,.4);}
+/* Stats */
+.block.light .stat b{background:linear-gradient(120deg,#2f4a9e,#6c8cff);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.block.light .stat span{color:#565b6b;}
+/* Testimonials */
+.block.light .tst-quote{color:#0a0b10;} .block.light .tst-author{color:#565b6b;} .block.light .tst-stars{color:#b78a3c;}
+.block.light .tst-arrow{background:#fff;border-color:rgba(12,22,45,.12);color:#0a0b10;}
+.block.light .tst-arrow:hover{border-color:var(--accent);color:var(--accent);}
+.block.light .tst-dots i{background:rgba(12,22,45,.2);} .block.light .tst-dots i.on{background:#2f4a9e;}
+/* FAQ */
+.block.light .faq-item{background:#fff;border-color:rgba(12,22,45,.1);}
+.block.light .faq-item:hover{border-color:rgba(12,22,45,.25);}
+.block.light .faq-item summary{color:#0a0b10;}
+.block.light .faq-item summary::after{color:#b78a3c;}
+.block.light .faq-item[open] summary::after{color:var(--accent);}
+.block.light .faq-a{color:#565b6b;}
+/* Feature */
+.block.light .f-media{background:linear-gradient(160deg,#fff,#e7eaf2);border-color:rgba(12,22,45,.1);box-shadow:0 24px 60px rgba(20,30,60,.14);}
+.block.light .mock .bar{background:rgba(12,22,45,.06);}
+.block.light .mock .bar.g{background:linear-gradient(120deg,#2f4a9e,#b78a3c);}
+.block.light .mock .row>div,.block.light .mock .big{background:rgba(12,22,45,.035);border-color:rgba(12,22,45,.08);}
+.block.light .flist li{color:#565b6b;border-color:rgba(12,22,45,.1);}
+.block.light .flist li b{color:#0a0b10;}
+.block.light .flist li::before{background:linear-gradient(120deg,#2f4a9e,#b78a3c);}
+/* Contact form */
+.block.light .cform-req{color:#8a8f9f;}
+.block.light .cform input,.block.light .cform textarea{background:#fff;border-color:rgba(12,22,45,.14);color:#0a0b10;}
+.block.light .cform input::placeholder,.block.light .cform textarea::placeholder{color:#9aa0b4;}
+.block.light .cform input:focus,.block.light .cform textarea:focus{border-color:var(--accent);background:#fff;}
+/* Botones en claro */
+.block.light .btn:not(.solid){border-color:rgba(12,22,45,.28);color:#0a0b10;}
+.block.light .btn:not(.solid):hover{border-color:#0a0b10;background:#0a0b10;color:#fff;}
+.block.light .btn.solid{background:#0a0b10;color:#fff;box-shadow:0 12px 30px rgba(0,0,0,.2);}
+.block.light .btn.solid:hover{filter:brightness(1.3);}
+.block.light .showcase .tst-arrow{background:#fff;color:#0a0b10;}
+
 /* ===== Responsive ===== */
 @media(max-width:900px){
   .menu{position:fixed;top:0;right:-100%;height:100vh;width:min(310px,82vw);flex-direction:column;justify-content:center;gap:26px;background:linear-gradient(160deg,var(--bg2),#040407);box-shadow:-10px 0 50px rgba(0,0,0,.6);transition:right .35s;padding:40px;z-index:60;}
