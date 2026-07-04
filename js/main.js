@@ -138,7 +138,13 @@ function openTeam(id) {
   document.getElementById('tmName').textContent = t.name;
   document.getElementById('tmRole').textContent = es ? t.role_es : t.role_en;
   document.getElementById('tmBio').textContent = es ? t.bio_es : t.bio_en;
-  document.getElementById('tmAvatar').textContent = t.initial;
+  var av = document.getElementById('tmAvatar');
+  av.textContent = ''; av.style.backgroundImage = '';
+  var src = 'assets/team/' + id + '.jpg';
+  var im = new Image();
+  im.onload = function () { av.style.backgroundImage = "url('" + src + "')"; };
+  im.onerror = function () { av.textContent = t.initial; };
+  im.src = src;
   document.getElementById('teamModal').hidden = false;
   document.body.style.overflow = 'hidden';
 }
@@ -147,6 +153,13 @@ function closeTeam() {
   document.body.style.overflow = '';
 }
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeTeam(); });
+// Cargar fotos del equipo si existen (si no, queda la inicial)
+document.querySelectorAll('.tavatar[data-img]').forEach(function (av) {
+  var src = av.getAttribute('data-img'); if (!src) return;
+  var im = new Image();
+  im.onload = function () { av.style.backgroundImage = "url('" + src + "')"; av.classList.add('has-img'); };
+  im.src = src;
+});
 
 // ---- FX: hue al scrollear + glow que sigue el cursor ----
 (function () {
