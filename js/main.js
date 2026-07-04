@@ -123,17 +123,12 @@ setLang(LANG);
 // ---- Equipo (modales) ----
 var TEAM = {
   mauricio: { name: 'Mauricio Rodriguez', initial: 'M', role_en: 'CEO', role_es: 'CEO',
-    bio_en: 'Founder & CEO of Aypex and a QA Automation Engineer with 10+ years shipping reliable software across web, mobile and backend in high-stakes environments — fintech, biometric identity, government and industrial systems. He treats quality as an engineering discipline: reading code diffs, tracing affected paths and building AI-driven, white-box test pipelines with full evidence traceability.',
-    bio_es: 'Fundador y CEO de Aypex e ingeniero de QA Automation con más de 10 años entregando software confiable en web, mobile y backend en entornos exigentes — fintech, identidad biométrica, gobierno e industrial. Trata la calidad como una disciplina de ingeniería: lee los diffs de código, rastrea los caminos afectados y construye pipelines de testing white-box asistidos por IA con trazabilidad total de la evidencia.',
+    bio_en: 'Founder & CEO of Aypex. Mauricio spent 10+ years as a QA Automation Engineer inside multinational companies — building automated testing across web, mobile and backend for fintech, biometric identity and industrial platforms, where shipping broken code was never an option.\n\nAfter years scaling quality for large, global teams, he moved from Argentina to Asia and founded Aypex with a single idea: build software and tailor-made solutions that truly fit the people who use them. He is also the creator of Khronos and Koibranch — his own developer tools.',
+    bio_es: 'Fundador y CEO de Aypex. Mauricio pasó más de 10 años como ingeniero de QA Automation en empresas multinacionales — construyendo testing automatizado en web, mobile y backend para plataformas de fintech, identidad biométrica e industria, donde no había lugar para el código roto.\n\nTras años escalando la calidad de grandes equipos globales, se mudó de Argentina a Asia y fundó Aypex con una sola idea: crear software y soluciones a medida que realmente se ajusten a las personas que los usan. Además es el creador de Khronos y Koibranch, sus propias herramientas para desarrolladores.',
     skills: ['White-Box Testing', 'Python', 'Selenium', 'Appium', 'Playwright', 'Pytest', 'API Testing', 'Security Testing', 'AI Agents', 'Claude Workflows', 'XRAY', 'Jira', 'React Native', 'CI/CD', 'Fintech', 'Biometric Identity'],
-    timeline: [
-      { c: 'Clue Insights', p: '2025 — Now', r_en: 'AI-Enhanced QA Engineer', r_es: 'AI-Enhanced QA Engineer', d_en: 'AI-driven, white-box QA across web, mobile & APIs for cross-platform industrial software (US).', d_es: 'QA white-box asistido por IA en web, mobile y APIs para software industrial multiplataforma (EE.UU.).' },
-      { c: 'Valida', p: '2025 — Now', r_en: 'QA Automation · Biometric & Security', r_es: 'QA Automation · Biometría y Seguridad', d_en: 'Dual-layer framework (pytest + Playwright, ~480 tests); 200+ requests scanned per run for security flaws & exposed PII.', d_es: 'Framework de doble capa (pytest + Playwright, ~480 tests); 200+ requests escaneados por corrida por vulnerabilidades y PII expuesta.' },
-      { c: 'Ualá', p: '2021 — 2025', r_en: 'QA Engineer · Payments', r_es: 'QA Engineer · Pagos', d_en: 'QA automation at fintech scale (Selenium/Appium · AWS · CI/CD); merchant onboarding to QR payment networks.', d_es: 'Automatización de QA a escala fintech (Selenium/Appium · AWS · CI/CD); alta de comercios a redes de pago QR.' },
-      { c: 'Opratel', p: '2019 — 2021', r_en: 'QA Automation Lead', r_es: 'QA Automation Lead', d_en: 'Defined QA strategy; built custom Python automation frameworks; trained the team.', d_es: 'Definí la estrategia de QA; construí frameworks de automatización en Python; formé al equipo.' },
-      { c: 'Gobierno de la Ciudad de Buenos Aires', p: '2017 — 2019', r_en: 'QA Automation Engineer', r_es: 'QA Automation Engineer', d_en: 'Automated & validated financial/regulatory systems (Java · JavaScript · Zephyr) under strict compliance.', d_es: 'Automaticé y validé sistemas financieros y regulatorios (Java · JavaScript · Zephyr) bajo estricto cumplimiento.' },
-      { c: 'Freelance QA', p: '2017 — 2019', r_en: 'QA · CRM / ERP', r_es: 'QA · CRM / ERP', d_en: 'Manual QA for CRM/ERP products (incl. Kaizen).', d_es: 'QA manual para productos CRM/ERP (incl. Kaizen).' },
-      { c: 'Consilium Service', p: '2016 — 2019', r_en: 'Software Tester QA', r_es: 'Software Tester QA', d_en: 'Where it all started — QA testing on CRM software.', d_es: 'Donde empezó todo — testing QA sobre software CRM.' }
+    projects: [
+      { name: 'Khronos', d_en: 'A production-grade QA automation framework in Python — web, mobile, APIs, security, performance and accessibility, all run and monitored from a single dashboard.', d_es: 'Framework de automatización QA de nivel producción en Python — web, mobile, APIs, seguridad, performance y accesibilidad, todo desde un solo dashboard.' },
+      { name: 'Koibranch', d_en: 'A standalone git guardian that turns any repo\'s history into a clear, colorful graph — spot conflicts, review changes before pushing and make teamwork effortless.', d_es: 'Un guardián de git independiente que convierte la historia de cualquier repo en un grafo claro y colorido — detectá conflictos, revisá cambios antes de pushear y hacé fácil el trabajo en equipo.' }
     ] },
   ezequiel: { name: 'Ezequiel Rodriguez', initial: 'E', role_en: 'CTO', role_es: 'CTO',
     bio_en: 'CTO and engineering lead at Aypex. Ezequiel turns product vision into scalable, reliable architecture across web and mobile, defining the technical direction, standards and stack behind everything the team builds.',
@@ -152,10 +147,10 @@ function openTeam(id) {
   if (t.skills && t.skills.length) {
     extra += '<div class="tm-h">Skills</div><div class="tm-chips">' + t.skills.map(function (s) { return '<span>' + s + '</span>'; }).join('') + '</div>';
   }
-  if (t.timeline && t.timeline.length) {
-    extra += '<div class="tm-h">' + (es ? 'Trayectoria' : 'Journey') + '</div><ul class="tm-time">' + t.timeline.map(function (j) {
-      return '<li><span class="tm-per">' + j.p + '</span><b>' + j.c + '</b><i>' + (es ? j.r_es : j.r_en) + '</i><p>' + (es ? j.d_es : j.d_en) + '</p></li>';
-    }).join('') + '</ul>';
+  if (t.projects && t.projects.length) {
+    extra += '<div class="tm-h">' + (es ? 'Creador de' : 'Creator of') + '</div><div class="tm-proj">' + t.projects.map(function (pr) {
+      return '<div class="tm-p"><b>' + pr.name + '</b><p>' + (es ? pr.d_es : pr.d_en) + '</p></div>';
+    }).join('') + '</div>';
   }
   var ex = document.getElementById('tmExtra'); if (ex) ex.innerHTML = extra;
   var av = document.getElementById('tmAvatar');
