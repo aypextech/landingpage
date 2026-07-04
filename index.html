@@ -23,6 +23,7 @@
         <a href="#producto" data-en="Products" data-es="Productos">Products</a>
         <a href="#proceso" data-en="Process" data-es="Proceso">Process</a>
         <a href="#nosotros" data-en="About" data-es="Nosotros">About</a>
+        <a href="#equipo" data-en="Team" data-es="Equipo">Team</a>
         <a href="#contacto" data-en="Contact" data-es="Contacto">Contact</a>
         <a class="btn solid" href="#contacto" data-en="Get a quote" data-es="Pedí presupuesto">Get a quote</a>
       </nav>
@@ -84,6 +85,31 @@
       <div class="tst-dots" id="scDots"></div>
     </div>
     <p class="sc-cap" data-en="A space built for focus, craft and collaboration." data-es="Un espacio pensado para foco, oficio y colaboración.">A space built for focus, craft and collaboration.</p>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="block light" id="equipo">
+  <span class="orb orb-b f2" style="width:420px;height:420px;bottom:-150px;left:-130px"></span>
+  <div class="wrap">
+    <div class="center"><span class="eyebrow" data-en="Our team" data-es="Nuestro equipo">Our team</span><h2 data-en="The people behind <span class='grad'>Aypex</span>" data-es="Las personas detrás de <span class='grad'>Aypex</span>">The people behind <span class="grad">Aypex</span></h2></div>
+    <div class="team">
+      <button class="tcard" onclick="openTeam('mauricio')">
+        <span class="tavatar">M</span>
+        <h3>Mauricio Rodriguez</h3><span class="trole">CEO</span>
+        <span class="tmore" data-en="View profile →" data-es="Ver perfil →">View profile →</span>
+      </button>
+      <button class="tcard" onclick="openTeam('ezequiel')">
+        <span class="tavatar">E</span>
+        <h3>Ezequiel Rodriguez</h3><span class="trole">CTO</span>
+        <span class="tmore" data-en="View profile →" data-es="Ver perfil →">View profile →</span>
+      </button>
+      <button class="tcard" onclick="openTeam('dante')">
+        <span class="tavatar">D</span>
+        <h3>Dante Roldan</h3><span class="trole" data-en="Software Engineer" data-es="Ingeniero de Software">Software Engineer</span>
+        <span class="tmore" data-en="View profile →" data-es="Ver perfil →">View profile →</span>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -241,6 +267,18 @@
     <div class="foot-bottom">© Aypex · Software &amp; Solutions 2026</div>
   </div>
 </footer>
+
+<!-- TEAM MODAL -->
+<div class="tmodal" id="teamModal" hidden>
+  <div class="tmodal-backdrop" onclick="closeTeam()"></div>
+  <div class="tmodal-card" role="dialog" aria-modal="true">
+    <button class="tmodal-close" onclick="closeTeam()" aria-label="Close">✕</button>
+    <span class="tmodal-avatar" id="tmAvatar"></span>
+    <h3 id="tmName"></h3>
+    <span class="trole" id="tmRole"></span>
+    <p id="tmBio"></p>
+  </div>
+</div>
 
 <div class="scroll-fx" aria-hidden="true"></div>
 <div class="cursor-glow" aria-hidden="true"></div>

@@ -120,6 +120,34 @@ setLang(LANG);
   render(); restart();
 })();
 
+// ---- Equipo (modales) ----
+var TEAM = {
+  mauricio: { name: 'Mauricio Rodriguez', initial: 'M', role_en: 'CEO', role_es: 'CEO',
+    bio_en: 'QA Automation Engineer turned founder — 10+ years across web, mobile and backend in high-stakes environments: fintech, biometric identity and industrial software. He treats quality as an engineering discipline: reading code diffs, tracing affected paths, and building AI-driven, white-box test pipelines with full evidence traceability. His path runs through Clue Insights (AI-driven QA on cross-platform industrial software), Valida (a dual-layer framework scanning 200+ requests per run for security flaws and exposed PII) and Ualá (QA automation at fintech scale). At Aypex he brings that same rigor to everything we ship.',
+    bio_es: 'Ingeniero de QA Automation devenido fundador — más de 10 años en web, mobile y backend en entornos exigentes: fintech, identidad biométrica y software industrial. Trata la calidad como una disciplina de ingeniería: lee los diffs de código, rastrea los caminos afectados y construye pipelines de testing white-box asistidos por IA con trazabilidad total de la evidencia. Su recorrido pasa por Clue Insights (QA con IA sobre software industrial multiplataforma), Valida (un framework de doble capa que escanea 200+ requests por corrida buscando vulnerabilidades y PII expuesta) y Ualá (automatización de QA a escala fintech). En Aypex lleva ese mismo rigor a todo lo que construimos.' },
+  ezequiel: { name: 'Ezequiel Rodriguez', initial: 'E', role_en: 'CTO', role_es: 'CTO',
+    bio_en: 'CTO and engineering lead at Aypex. Ezequiel turns product vision into scalable, reliable architecture across web and mobile, defining the technical direction, standards and stack behind everything the team builds.',
+    bio_es: 'CTO y líder de ingeniería de Aypex. Ezequiel convierte la visión de producto en arquitectura escalable y confiable en web y mobile, definiendo la dirección técnica, los estándares y el stack detrás de todo lo que construye el equipo.' },
+  dante: { name: 'Dante Roldan', initial: 'D', role_en: 'Software Engineer', role_es: 'Ingeniero de Software',
+    bio_en: 'Software engineer at Aypex, building the products and custom solutions our clients rely on — from CRM features to automations and polished, high-performance web apps.',
+    bio_es: 'Ingeniero de software en Aypex. Construye los productos y soluciones a medida en los que confían nuestros clientes — desde funcionalidades del CRM hasta automatizaciones y web apps pulidas y de alto rendimiento.' }
+};
+function openTeam(id) {
+  var t = TEAM[id]; if (!t) return;
+  var es = (typeof LANG !== 'undefined' && LANG === 'es');
+  document.getElementById('tmName').textContent = t.name;
+  document.getElementById('tmRole').textContent = es ? t.role_es : t.role_en;
+  document.getElementById('tmBio').textContent = es ? t.bio_es : t.bio_en;
+  document.getElementById('tmAvatar').textContent = t.initial;
+  document.getElementById('teamModal').hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+function closeTeam() {
+  var m = document.getElementById('teamModal'); if (m) m.hidden = true;
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeTeam(); });
+
 // ---- FX: hue al scrollear + glow que sigue el cursor ----
 (function () {
   var root = document.documentElement, cg = document.querySelector('.cursor-glow');
