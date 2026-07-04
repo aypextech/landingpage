@@ -1,0 +1,148 @@
+/* ===========================================================
+   Aypex — Software & Solutions · main.js
+   =========================================================== */
+
+// ---- Header sólido al scrollear ----
+var hdr = document.getElementById('hdr');
+function onHdr() { if (window.scrollY > 40) hdr.classList.add('scrolled'); else hdr.classList.remove('scrolled'); }
+window.addEventListener('scroll', onHdr); onHdr();
+
+// ---- Menú mobile ----
+document.getElementById('burger').addEventListener('click', function () {
+  document.getElementById('menu').classList.toggle('open');
+});
+document.querySelectorAll('#menu a').forEach(function (a) {
+  a.addEventListener('click', function () { document.getElementById('menu').classList.remove('open'); });
+});
+
+// ---- Idioma: Inglés <-> Español ----
+var LANG = 'en';
+try { LANG = localStorage.getItem('ax_lang') || 'en'; } catch (e) {}
+function setLang(l) {
+  LANG = (l === 'es') ? 'es' : 'en';
+  document.documentElement.lang = LANG;
+  document.body.classList.toggle('es', LANG === 'es');
+  document.querySelectorAll('[data-en]').forEach(function (el) {
+    var v = el.getAttribute('data-' + LANG); if (v != null) el.innerHTML = v;
+  });
+  document.querySelectorAll('[data-ph-en]').forEach(function (el) {
+    var v = el.getAttribute('data-ph-' + LANG); if (v != null) el.placeholder = v;
+  });
+  var t = document.getElementById('langToggle');
+  if (t) t.textContent = (LANG === 'en') ? 'ES' : 'EN';
+  try { localStorage.setItem('ax_lang', LANG); } catch (e) {}
+}
+document.getElementById('langToggle').addEventListener('click', function () {
+  setLang(LANG === 'en' ? 'es' : 'en');
+  document.getElementById('menu').classList.remove('open');
+});
+setLang(LANG);
+
+// ---- Hero slideshow opcional (si hay imágenes en assets/hero*) ----
+(function () {
+  var srcs = [];  // sin fotos: el hero usa la malla de color animada (CSS)
+  var host = document.getElementById('heroSlides');
+  var dotsHost = document.getElementById('heroDots');
+  if (!host || !srcs.length) return;
+  var slides = [], dots = [], idx = 0, timer;
+  function show(i) {
+    slides[idx].classList.remove('on'); if (dots[idx]) dots[idx].classList.remove('on');
+    idx = (i + slides.length) % slides.length;
+    slides[idx].classList.add('on'); if (dots[idx]) dots[idx].classList.add('on');
+  }
+  function start() { clearInterval(timer); if (slides.length > 1) timer = setInterval(function () { show(idx + 1); }, 5200); }
+  srcs.forEach(function (src) {
+    var im = new Image();
+    im.onload = function () {
+      var d = document.createElement('div'); d.className = 'hero-slide';
+      d.style.backgroundImage = "url('" + src + "')"; host.appendChild(d); slides.push(d);
+      if (dotsHost) { var dot = document.createElement('i'); var mine = slides.length - 1; dot.addEventListener('click', function () { show(mine); start(); }); dotsHost.appendChild(dot); dots.push(dot); }
+      if (slides.length === 1) { d.classList.add('on'); if (dots[0]) dots[0].classList.add('on'); } start();
+    };
+    im.src = src;
+  });
+})();
+
+// ---- Reveal al scrollear ----
+(function () {
+  var els = document.querySelectorAll('.info-cell, .center, .ccard, .step, .feature .f-media, .feature .f-copy, .stat, .tst, .faq-item, .foot-grid > div');
+  els.forEach(function (el) { el.classList.add('reveal'); });
+  ['.cards .ccard', '.steps .step', '.stats .stat'].forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el, i) { el.style.transitionDelay = (i * 0.08) + 's'; });
+  });
+  if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+  els.forEach(function (el) { io.observe(el); });
+})();
+
+// ---- Contador de stats ----
+(function () {
+  var counts = document.querySelectorAll('.count');
+  if (!counts.length || !('IntersectionObserver' in window)) return;
+  function run(el) {
+    var to = parseFloat(el.getAttribute('data-to')) || 0, suf = el.getAttribute('data-suffix') || '', t0 = null;
+    function step(ts) { if (!t0) t0 = ts; var p = Math.min((ts - t0) / 1400, 1); el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))) + suf; if (p < 1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } }); }, { threshold: 0.6 });
+  counts.forEach(function (el) { io.observe(el); });
+})();
+
+// ---- Testimonios (carousel) ----
+(function () {
+  var track = document.getElementById('tstTrack'), dots = document.getElementById('tstDots');
+  if (!track) return;
+  var n = track.children.length, i = 0, timer = null;
+  for (var k = 0; k < n; k++) { var d = document.createElement('i'); d.addEventListener('click', (function (idx) { return function () { go(idx); }; })(k)); dots.appendChild(d); }
+  function render() { track.style.transform = 'translateX(-' + (i * 100) + '%)'; Array.prototype.forEach.call(dots.children, function (el, idx) { el.classList.toggle('on', idx === i); }); }
+  function go(idx) { i = (idx + n) % n; render(); restart(); }
+  function restart() { clearInterval(timer); timer = setInterval(function () { go(i + 1); }, 6500); }
+  window.tstShift = function (dir) { go(i + dir); };
+  var box = track.closest('.tst');
+  if (box) { box.addEventListener('mouseenter', function () { clearInterval(timer); }); box.addEventListener('mouseleave', restart); }
+  render(); restart();
+})();
+
+// ---- FX: hue al scrollear + glow que sigue el cursor ----
+(function () {
+  var root = document.documentElement, cg = document.querySelector('.cursor-glow');
+  function onScroll() { var h = root.scrollHeight - window.innerHeight; var p = h > 0 ? window.scrollY / h : 0; root.style.setProperty('--scrollhue', (p * 300).toFixed(1) + 'deg'); }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  var fine = window.matchMedia('(pointer:fine)').matches, reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (cg && fine && !reduce) {
+    document.body.classList.add('has-cursor');
+    var rx = innerWidth / 2, ry = innerHeight / 2, cx = rx, cy = ry, raf = null;
+    window.addEventListener('mousemove', function (e) { rx = e.clientX; ry = e.clientY; if (!raf) raf = requestAnimationFrame(tick); });
+    function tick() { cx += (rx - cx) * 0.16; cy += (ry - cy) * 0.16; cg.style.transform = 'translate(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px) translate(-50%,-50%)'; raf = (Math.abs(rx - cx) > 0.4 || Math.abs(ry - cy) > 0.4) ? requestAnimationFrame(tick) : null; }
+  }
+})();
+
+// ---- Botones primarios "magnéticos" ----
+(function () {
+  if (!window.matchMedia('(pointer:fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.btn.solid').forEach(function (b) {
+    b.addEventListener('mousemove', function (e) { var r = b.getBoundingClientRect(); b.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * 0.16) + 'px,' + ((e.clientY - r.top - r.height / 2) * 0.26) + 'px)'; });
+    b.addEventListener('mouseleave', function () { b.style.transform = ''; });
+  });
+})();
+
+// ---- Formulario de contacto (AJAX FormSubmit) ----
+(function () {
+  var form = document.getElementById('contactForm'); if (!form) return;
+  var btn = document.getElementById('cformBtn'), msg = document.getElementById('cformMsg');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (form._honey && form._honey.value) return;
+    var es = LANG === 'es';
+    var sending = es ? 'Enviando…' : 'Sending…';
+    var okTxt = es ? '¡Gracias! Te responderemos muy pronto ✓' : 'Thanks! We\'ll get back to you soon ✓';
+    var errTxt = es ? 'Algo salió mal. Probá de nuevo o escribinos por email.' : 'Something went wrong. Please try again or email us.';
+    var orig = btn.textContent; btn.disabled = true; btn.textContent = sending; msg.hidden = true;
+    fetch(form.action, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (d && (d.success === 'true' || d.success === true)) { form.reset(); msg.textContent = okTxt; msg.className = 'cform-msg ok'; msg.hidden = false; } else { throw new Error('fail'); } btn.textContent = orig; btn.disabled = false; })
+      .catch(function () { msg.textContent = errTxt; msg.className = 'cform-msg err'; msg.hidden = false; btn.textContent = orig; btn.disabled = false; });
+  });
+})();
