@@ -68,7 +68,7 @@ header.scrolled .logo img{height:32px;}
 .hero-logo{width:min(440px,82%);height:auto;margin:0 auto 30px;display:block;filter:drop-shadow(0 0 34px rgba(200,210,235,.28)) drop-shadow(0 14px 30px rgba(0,0,0,.6));animation:logoGlow 5s ease-in-out infinite;}
 @keyframes logoGlow{0%,100%{filter:drop-shadow(0 0 28px rgba(200,210,235,.24)) drop-shadow(0 14px 30px rgba(0,0,0,.6));}50%{filter:drop-shadow(0 0 46px rgba(150,175,255,.4)) drop-shadow(0 0 80px rgba(120,140,220,.22)) drop-shadow(0 14px 30px rgba(0,0,0,.6));}}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
-.hero-tag{font-family:var(--body);font-size:clamp(16px,2.1vw,21px);font-weight:300;max-width:600px;margin:0 auto 32px;color:rgba(255,255,255,.84);letter-spacing:.2px;}
+.hero-tag{font-family:var(--body);font-size:clamp(16px,2.1vw,21px);font-weight:300;max-width:600px;margin:34px auto 34px;color:rgba(255,255,255,.84);letter-spacing:.2px;}
 .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 .hero-dots{position:absolute;bottom:58px;left:50%;transform:translateX(-50%);z-index:2;display:flex;gap:9px;}
 .hero-dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:.3s;}
@@ -83,8 +83,11 @@ header.scrolled .logo img{height:32px;}
 /* Hero con video de fondo */
 .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
 .hero-video::before{display:none;}
-.hero-video .hero-grid{opacity:.28;}
-.hero-video .hero-overlay{background:linear-gradient(180deg,rgba(4,4,8,.6),rgba(4,4,8,.32) 40%,rgba(4,4,8,.78));}
+.hero-video .hero-grid{opacity:.22;}
+/* Overlay negro (oscurece el video) */
+.hero-video .hero-overlay{background:linear-gradient(180deg,rgba(3,3,6,.82),rgba(3,3,6,.6) 42%,rgba(3,3,6,.9));}
+/* Franja negra al pie: separa secciones y tapa el watermark de Gemini (abajo der.) */
+.hero-video::after{content:'';position:absolute;left:0;right:0;bottom:0;height:210px;z-index:1;pointer-events:none;background:linear-gradient(180deg,transparent 0%,#060609 36%,#060609 100%);}
 
 /* ===== Info strip ===== */
 .info{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
