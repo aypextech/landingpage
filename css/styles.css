@@ -7,6 +7,7 @@
   --bg:#060609; --bg2:#0b0c11; --surface:#12131a; --surface2:#1a1b24;
   --ink:#f2f4f9; --muted:#8a8f9f; --line:rgba(255,255,255,.08); --white:#ffffff;
   --accent:#6c8cff;                 /* azul refinado, uso puntual */
+  --gold:#d8b884;                   /* dorado champagne, acento cálido */
   --silver1:#eef1f7; --silver2:#b7bccb; --silver3:#7f8598;
   --grad:linear-gradient(120deg,#f6f8fc,#c3c8d6 55%,#8b90a1);   /* plata metálico */
   --grad-accent:linear-gradient(120deg,#9fb4ff,#5b7cff);
@@ -228,6 +229,30 @@ footer{background:#040407;border-top:1px solid var(--line);padding:66px 0 30px;}
 ::selection{background:rgba(108,140,255,.3);color:#fff;}
 
 body.es .eyebrow,body.es .menu a,body.es .lang-btn,body.es .btn{letter-spacing:1.2px;}
+
+/* ===== Separador luminoso entre secciones (blanco · azul · dorado) ===== */
+section.block::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(1080px,84%);height:1px;pointer-events:none;z-index:3;background:linear-gradient(90deg,transparent,rgba(255,255,255,.42) 30%,var(--accent) 50%,var(--gold) 70%,transparent);opacity:.5;}
+
+/* ===== Showcase (carrusel del estudio) ===== */
+.showcase{position:relative;margin-top:52px;max-width:1060px;margin-left:auto;margin-right:auto;}
+.sc-view{overflow:hidden;border-radius:20px;box-shadow:0 0 0 1px rgba(216,184,132,.4),0 0 0 6px rgba(16,17,24,.92),0 0 0 7px rgba(255,255,255,.06),var(--shadow);}
+.sc-track{display:flex;transition:transform .75s cubic-bezier(.22,.61,.36,1);}
+.sc-slide{min-width:100%;}
+.sc-slide img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;}
+.showcase .tst-arrow{background:rgba(8,9,14,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+.showcase .tst-prev{left:16px;}.showcase .tst-next{right:16px;}
+.showcase .tst-dots{margin-top:22px;}
+.sc-cap{text-align:center;margin-top:20px;color:var(--muted);font-size:14px;font-weight:300;letter-spacing:.4px;}
+
+/* ===== CTA en claro (corta el negro; acentos azul + dorado) ===== */
+.cta.light{background:linear-gradient(160deg,#f6f7fb,#e7e9f1);}
+.cta.light .orb{display:none;}
+.cta.light .eyebrow{color:#b78a3c;}
+.cta.light h2{color:#0a0b10;}
+.cta.light p{color:#565b6b;}
+.cta.light .btn.solid{background:#0a0b10;color:#fff;box-shadow:0 14px 34px rgba(0,0,0,.22);}
+.cta.light .btn.solid:hover{filter:brightness(1.25);}
+.cta.light::before{background:linear-gradient(90deg,transparent,rgba(10,11,16,.25) 30%,var(--accent) 50%,var(--gold) 70%,transparent);opacity:.55;}
 
 /* ===== Responsive ===== */
 @media(max-width:900px){

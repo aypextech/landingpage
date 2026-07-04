@@ -105,6 +105,21 @@ setLang(LANG);
   render(); restart();
 })();
 
+// ---- Showcase del estudio (carrusel de imágenes) ----
+(function () {
+  var track = document.getElementById('scTrack'), dots = document.getElementById('scDots');
+  if (!track) return;
+  var n = track.children.length, i = 0, timer = null;
+  for (var k = 0; k < n; k++) { var d = document.createElement('i'); d.addEventListener('click', (function (idx) { return function () { go(idx); }; })(k)); dots.appendChild(d); }
+  function render() { track.style.transform = 'translateX(-' + (i * 100) + '%)'; Array.prototype.forEach.call(dots.children, function (el, idx) { el.classList.toggle('on', idx === i); }); }
+  function go(idx) { i = (idx + n) % n; render(); restart(); }
+  function restart() { clearInterval(timer); if (n > 1) timer = setInterval(function () { go(i + 1); }, 5000); }
+  window.scShift = function (dir) { go(i + dir); };
+  var box = track.closest('.showcase');
+  if (box) { box.addEventListener('mouseenter', function () { clearInterval(timer); }); box.addEventListener('mouseleave', restart); }
+  render(); restart();
+})();
+
 // ---- FX: hue al scrollear + glow que sigue el cursor ----
 (function () {
   var root = document.documentElement, cg = document.querySelector('.cursor-glow');
