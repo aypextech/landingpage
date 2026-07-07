@@ -214,8 +214,8 @@ var SERVICE = {
     desc_en: 'Native app testing on real Android and iOS — the same quality bar on every device.',
     desc_es: 'Testing de apps nativas en Android e iOS reales — la misma vara de calidad en cada dispositivo.',
     feats: [
-      { en: '<b>Android</b> — Appium + UiAutomator2.', es: '<b>Android</b> — Appium + UiAutomator2.' },
-      { en: '<b>iOS</b> — Appium + XCUITest.', es: '<b>iOS</b> — Appium + XCUITest.' },
+      { en: '<b>Android</b> — Maestro flows: fast, resilient UI automation.', es: '<b>Android</b> — flujos Maestro: automatización UI rápida y resiliente.' },
+      { en: '<b>iOS</b> — native XCUITest coverage.', es: '<b>iOS</b> — cobertura nativa con XCUITest.' },
       { en: '<b>Native flows</b> — gestures, permissions &amp; device farms.', es: '<b>Flujos nativos</b> — gestos, permisos y granjas de dispositivos.' },
       { en: '<b>One pipeline</b> — same reports &amp; CI as web.', es: '<b>Un solo pipeline</b> — mismos reportes y CI que web.' }
     ], foot_en: K_FOOT.en, foot_es: K_FOOT.es },
