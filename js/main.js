@@ -154,7 +154,6 @@ function openTeam(id) {
   var ex = document.getElementById('tmExtra'); if (ex) ex.innerHTML = extra;
   var av = document.getElementById('tmAvatar');
   av.classList.toggle('sebastian-avatar', id === 'sebastian');
-  av.classList.toggle('ezequiel-avatar', id === 'ezequiel');
   av.textContent = ''; av.style.backgroundImage = '';
   var candidates = ['assets/team/' + id + '.jpg', 'assets/team/' + id + '.png', 'assets/team/' + id + '.jpeg'];
   function tryLoad(i) {
