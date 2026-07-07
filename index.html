@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="assets/logo-final.png">
-<link rel="stylesheet" href="css/styles.css?v=5">
+<link rel="stylesheet" href="css/styles.css?v=6">
 </head>
 <body>
 
@@ -163,8 +163,9 @@
     <div class="center"><span class="eyebrow" data-en="Built in-house" data-es="Hecho por nosotros">Built in-house</span><h2 data-en="The tools we build &amp; use" data-es="Las herramientas que construimos y usamos">The tools we build &amp; use</h2><p class="lead" data-en="We don't just ship software — we engineer our own tools to build it better. Two of them power everything we do." data-es="No solo entregamos software — construimos nuestras propias herramientas para hacerlo mejor. Dos de ellas impulsan todo lo que hacemos.">We don't just ship software — we engineer our own tools to build it better. Two of them power everything we do.</p></div>
     <div class="tools-band">
       <div class="tool-card">
-        <button class="tool-shot" type="button" onclick="openTool('khronos')" aria-label="Khronos — read more">
-          <img src="assets/tools/khronos.png" alt="Khronos logo" loading="lazy">
+        <button class="tool-shot k" type="button" onclick="openTool('khronos')" aria-label="Khronos — read more">
+          <img class="tool-shot-img" src="assets/tools/khronos.png" alt="Khronos logo" loading="lazy">
+          <span class="tool-shot-overlay"></span>
           <span class="tool-shot-more" data-en="Read more" data-es="Ver más">Read more</span>
         </button>
         <h3>Khronos</h3>
@@ -173,8 +174,9 @@
         <div class="tool-chips"><span>Playwright</span><span>Maestro</span><span>K6 · Locust</span><span>OWASP</span><span>WCAG 2.1</span><span>Allure</span></div>
       </div>
       <div class="tool-card">
-        <button class="tool-shot" type="button" onclick="openTool('koibranch')" aria-label="Koibranch — read more">
-          <img src="assets/tools/koibranch.png" alt="Koibranch logo" loading="lazy">
+        <button class="tool-shot koi" type="button" onclick="openTool('koibranch')" aria-label="Koibranch — read more">
+          <img class="tool-shot-img" src="assets/tools/koibranch.png" alt="Koibranch logo" loading="lazy">
+          <span class="tool-shot-overlay"></span>
           <span class="tool-shot-more" data-en="Read more" data-es="Ver más">Read more</span>
         </button>
         <h3>Koibranch</h3>
@@ -360,7 +362,7 @@
   <div class="tmodal-backdrop" onclick="closeTool()"></div>
   <div class="tmodal-card" role="dialog" aria-modal="true">
     <button class="tmodal-close" onclick="closeTool()" aria-label="Close">✕</button>
-    <span class="tool-modal-shot"><img id="tlImg" src="" alt=""></span>
+    <span class="tool-modal-shot"><img id="tlImg" src="" alt=""><span class="tool-shot-overlay"></span></span>
     <span class="svc-modal-tag" id="tlKicker"></span>
     <h3 id="tlName"></h3>
     <p id="tlDesc"></p>
@@ -370,6 +372,6 @@
 
 <div class="scroll-fx" aria-hidden="true"></div>
 <div class="cursor-glow" aria-hidden="true"></div>
-<script src="js/main.js?v=5"></script>
+<script src="js/main.js?v=6"></script>
 </body>
 </html>
