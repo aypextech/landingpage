@@ -164,12 +164,12 @@ section#servicios .ccard.svc.soon{opacity:.9;}
 .tool-card{background:linear-gradient(160deg,var(--surface),var(--bg2));border:1px solid var(--line);border-radius:20px;padding:38px 30px 34px;text-align:center;transition:transform .45s cubic-bezier(.22,.61,.36,1),box-shadow .45s,border-color .45s;}
 .tool-card:hover{transform:translateY(-6px);box-shadow:0 30px 64px rgba(0,0,0,.5);border-color:rgba(255,255,255,.2);}
 /* 9:16 clickable logo tile — glass overlay + brand glow + reflection */
-.tool-shot{position:relative;display:inline-block;width:178px;aspect-ratio:9/16;border:none;background:none;padding:0;cursor:pointer;margin:0 auto 98px;border-radius:22px;--glow:rgba(140,170,255,.4);}
+.tool-shot{position:relative;display:inline-block;width:232px;aspect-ratio:9/16;border:none;background:none;padding:0;cursor:pointer;margin:0 auto 92px;border-radius:22px;--glow:rgba(140,170,255,.4);}
 .tool-shot.k{--glow:rgba(70,205,235,.42);}
 .tool-shot.koi{--glow:rgba(255,70,170,.4);}
 .tool-shot::before{content:'';position:absolute;z-index:0;left:50%;top:46%;width:120%;height:70%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--glow),transparent 72%);filter:blur(26px);opacity:.35;transition:opacity .5s,transform .5s;pointer-events:none;}
 .tool-shot:hover::before{opacity:.95;transform:translate(-50%,-52%) scale(1.06);}
-.tool-shot-img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;border-radius:22px;border:1px solid rgba(255,255,255,.14);box-shadow:0 22px 52px rgba(0,0,0,.6);transition:transform .5s cubic-bezier(.22,.61,.36,1),box-shadow .5s;-webkit-box-reflect:below 12px linear-gradient(transparent 52%,rgba(255,255,255,.3));}
+.tool-shot-img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;background:#000;border-radius:22px;border:1px solid rgba(255,255,255,.14);box-shadow:0 22px 52px rgba(0,0,0,.6);transition:transform .5s cubic-bezier(.22,.61,.36,1),box-shadow .5s;-webkit-box-reflect:below 12px linear-gradient(transparent 60%,rgba(255,255,255,.26));}
 .tool-shot:hover .tool-shot-img{transform:translateY(-6px) scale(1.025);box-shadow:0 34px 70px rgba(0,0,0,.66);}
 .tool-shot-overlay{position:absolute;z-index:2;top:0;left:0;width:100%;aspect-ratio:9/16;border-radius:22px;pointer-events:none;overflow:hidden;
   background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0) 20%),linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,0) 30%),linear-gradient(125deg,rgba(255,255,255,.16),rgba(255,255,255,0) 30%);
@@ -187,8 +187,8 @@ section#servicios .ccard.svc.soon{opacity:.9;}
 
 /* Tool modal (enlarged 9:16 logo + full read) */
 .tool-modal .tmodal-card{max-width:440px;text-align:center;}
-.tool-modal-shot{position:relative;display:block;width:200px;aspect-ratio:9/16;margin:6px auto 112px;border-radius:22px;}
-.tool-modal-shot img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;border-radius:22px;border:1px solid rgba(255,255,255,.16);box-shadow:0 24px 58px rgba(0,0,0,.66);-webkit-box-reflect:below 12px linear-gradient(transparent 52%,rgba(255,255,255,.3));}
+.tool-modal-shot{position:relative;display:block;width:250px;aspect-ratio:9/16;margin:6px auto 104px;border-radius:22px;}
+.tool-modal-shot img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;background:#000;border-radius:22px;border:1px solid rgba(255,255,255,.16);box-shadow:0 24px 58px rgba(0,0,0,.66);-webkit-box-reflect:below 12px linear-gradient(transparent 60%,rgba(255,255,255,.26));}
 .tool-modal-shot .tool-shot-overlay{z-index:2;}
 .tool-modal #tlName{font-size:26px;color:#fff;margin-bottom:12px;font-weight:500;}
 .tool-modal #tlDesc{color:var(--muted);font-weight:300;font-size:15px;text-align:center;line-height:1.7;}
