@@ -65,7 +65,7 @@ setLang(LANG);
 
 // ---- Reveal al scrollear ----
 (function () {
-  var els = document.querySelectorAll('.info-cell, .center, .svc-head, .ccard, .tool-card, .step, .feature .f-media, .feature .f-copy, .stat, .tst, .faq-item, .foot-grid > div');
+  var els = document.querySelectorAll('.info-cell, .center, .svc-head, .ccard, .tool-card, .step, .cov-item, .tv-item, .feature .f-media, .feature .f-copy, .stat, .tst, .faq-item, .foot-grid > div');
   els.forEach(function (el) { el.classList.add('reveal'); });
   ['.cards .ccard', '.steps .step', '.stats .stat'].forEach(function (sel) {
     document.querySelectorAll(sel).forEach(function (el, i) { el.style.transitionDelay = (i * 0.08) + 's'; });
