@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="assets/logo-final.png">
-<link rel="stylesheet" href="css/styles.css?v=15">
+<link rel="stylesheet" href="css/styles.css?v=17">
 </head>
 <body>
 
@@ -30,7 +30,11 @@
         <a href="#contacto" data-en="Contact" data-es="Contacto">Contact</a>
         <a class="btn solid" href="#contacto" data-en="Get a quote" data-es="Pedí presupuesto">Get a quote</a>
       </nav>
-      <button class="lang-btn" id="langToggle" aria-label="Language">ES</button>
+      <button class="lang-btn" id="langToggle" aria-label="Language">
+        <span class="lang-thumb" aria-hidden="true"></span>
+        <span class="lang-opt" data-l="es">ES</span>
+        <span class="lang-opt" data-l="en">EN</span>
+      </button>
       <button class="burger" id="burger" aria-label="Menu">☰</button>
     </div>
   </div>
@@ -437,6 +441,6 @@
 
 <div class="scroll-fx" aria-hidden="true"></div>
 <div class="cursor-glow" aria-hidden="true"></div>
-<script src="js/main.js?v=16"></script>
+<script src="js/main.js?v=17"></script>
 </body>
 </html>

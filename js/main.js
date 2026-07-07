@@ -28,8 +28,6 @@ function setLang(l) {
   document.querySelectorAll('[data-ph-en]').forEach(function (el) {
     var v = el.getAttribute('data-ph-' + LANG); if (v != null) el.placeholder = v;
   });
-  var t = document.getElementById('langToggle');
-  if (t) t.textContent = (LANG === 'en') ? 'ES' : 'EN';
   try { localStorage.setItem('ax_lang', LANG); } catch (e) {}
 }
 document.getElementById('langToggle').addEventListener('click', function () {

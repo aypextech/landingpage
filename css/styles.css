@@ -47,8 +47,14 @@ header.scrolled .logo img{height:32px;}
 .menu .btn{padding:11px 22px;}
 .burger{display:none;background:none;border:none;color:#fff;font-size:26px;cursor:pointer;}
 .nav-right{display:flex;align-items:center;gap:16px;}
-.lang-btn{background:none;border:1px solid rgba(255,255,255,.28);color:#fff;font-family:var(--sans);font-size:11px;letter-spacing:1.4px;text-transform:uppercase;padding:8px 12px;border-radius:22px;cursor:pointer;transition:.3s;min-width:48px;}
-.lang-btn:hover{background:#fff;border-color:#fff;color:#0a0b10;}
+.lang-btn{position:relative;display:inline-flex;align-items:center;padding:3px;border:1px solid rgba(255,255,255,.28);border-radius:22px;background:none;cursor:pointer;overflow:hidden;line-height:1;transition:border-color .3s;}
+.lang-btn:hover{border-color:rgba(255,255,255,.5);}
+.lang-thumb{position:absolute;top:3px;bottom:3px;left:50%;width:calc(50% - 3px);border-radius:18px;background:#fff;transition:left .32s cubic-bezier(.22,.61,.36,1);}
+body.es .lang-thumb{left:3px;}
+.lang-opt{position:relative;z-index:1;flex:1;text-align:center;font-family:var(--sans);font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.6);padding:6px 11px;transition:color .3s;}
+.lang-opt[data-l="en"]{color:#0a0b10;}
+body.es .lang-opt[data-l="en"]{color:rgba(255,255,255,.6);}
+body.es .lang-opt[data-l="es"]{color:#0a0b10;}
 
 /* ===== Hero ===== */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden;
