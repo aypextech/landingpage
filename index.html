@@ -123,15 +123,55 @@
 </section>
 
 <!-- SERVICES -->
-<section class="block light" id="servicios">
+<section class="block" id="servicios">
   <span class="orb orb-b f2" style="width:440px;height:440px;bottom:-160px;left:-140px"></span>
   <div class="wrap">
     <div class="center"><span class="eyebrow" data-en="Services" data-es="Servicios">Services</span><h2 data-en="What we can build for you" data-es="Lo que podemos construir para vos">What we can build for you</h2></div>
-    <div class="cards">
-      <div class="ccard"><div class="num">01</div><div class="c-ico"><svg viewBox="0 0 24 24"><path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3Z"/><path d="M4 7v5c0 1.7 3.6 3 8 3s8-1.3 8-3V7"/><path d="M4 12v5c0 1.7 3.6 3 8 3s8-1.3 8-3v-5"/></svg></div><h3 data-en="CRM & ERP" data-es="CRM & ERP">CRM & ERP</h3><p data-en="We build CRM and ERP solutions to connect customer, sales, operations, finance and inventory in one place — tailored to your business and growth." data-es="Creamos soluciones CRM y ERP para conectar clientes, ventas, operaciones, finanzas y stock en un solo lugar — adaptadas a tu negocio y crecimiento.">We build CRM and ERP solutions to connect customer, sales, operations, finance and inventory in one place — tailored to your business and growth.</p></div>
-      <div class="ccard b"><div class="num">02</div><div class="c-ico"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/><circle cx="12" cy="12" r="3"/></svg></div><h3 data-en="Automation" data-es="Automatización">Automation</h3><p data-en="Web automation, mobile automation for Android and iOS, API automation, performance testing and pen testing coming soon — to make every release faster and more reliable." data-es="Automatización web, automatización mobile para Android e iOS, automatización de APIs, testing de performance y pen testing próximamente — para hacer cada release más rápido y confiable.">Web automation, mobile automation for Android and iOS, API automation, performance testing and pen testing coming soon — to make every release faster and more reliable.</p></div>
-      <div class="ccard c"><div class="num">03</div><div class="c-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M7 21h10"/></svg></div><h3 data-en="Web Design" data-es="Diseño web">Web Design</h3><p data-en="From landing pages to ecommerce, we create digital experiences that look sharp, convert better and reflect your brand with clarity." data-es="Desde landing pages hasta ecommerce, creamos experiencias digitales que se ven impecables, convierten mejor y reflejan tu marca con claridad.">From landing pages to ecommerce, we create digital experiences that look sharp, convert better and reflect your brand with clarity.</p></div>
-      <div class="ccard l"><div class="num">04</div><div class="c-ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-.7-.7-2 2-2.6Z"/></svg></div><h3 data-en="Custom Tools" data-es="Herramientas a medida">Custom Tools</h3><p data-en="Have an idea? We can turn it into a true custom tool built for your workflow, budget and customers." data-es="¿Tenés una idea? La podemos convertir en una herramienta realmente a medida, pensada para tu flujo, presupuesto y clientes.">Have an idea? We can turn it into a true custom tool built for your workflow, budget and customers.</p></div>
+
+    <!-- Automation suite -->
+    <div class="svc-head">
+      <span class="svc-tag" data-en="Automation suite" data-es="Suite de automatización">Automation suite</span>
+      <h3 data-en="Powered by <b>Khronos</b> — our production-grade QA framework" data-es="Impulsada por <b>Khronos</b> — nuestro framework de QA de nivel producción">Powered by <b>Khronos</b> — our production-grade QA framework</h3>
+      <p data-en="Testing on autopilot across every layer — click a card to see how." data-es="Testing en piloto automático en cada capa — tocá una tarjeta para ver cómo.">Testing on autopilot across every layer — click a card to see how.</p>
+    </div>
+    <div class="cards svc-auto">
+      <button class="ccard svc" type="button" onclick="openService('web')"><div class="num">01</div><div class="c-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M10 12.4l3.6 2-3.6 2z"/></svg></div><h3 data-en="Web Automation" data-es="Automatización Web">Web Automation</h3><p data-en="End-to-end web testing that runs on every release." data-es="Testing web end-to-end que corre en cada release.">End-to-end web testing that runs on every release.</p><span class="svc-more" data-en="View details →" data-es="Ver detalle →">View details →</span></button>
+      <button class="ccard svc" type="button" onclick="openService('mobile')"><div class="num">02</div><div class="c-ico"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18.5h2"/></svg></div><h3 data-en="Mobile Automation" data-es="Automatización Mobile">Mobile Automation</h3><p data-en="Native app testing on real Android &amp; iOS." data-es="Testing de apps nativas en Android e iOS reales.">Native app testing on real Android &amp; iOS.</p><span class="svc-more" data-en="View details →" data-es="Ver detalle →">View details →</span></button>
+      <button class="ccard svc" type="button" onclick="openService('api')"><div class="num">03</div><div class="c-ico"><svg viewBox="0 0 24 24"><path d="M8 4H6a2 2 0 0 0-2 2v3a2 2 0 0 1-2 2 2 2 0 0 1 2 2v3a2 2 0 0 0 2 2h2"/><path d="M16 4h2a2 2 0 0 1 2 2v3a2 2 0 0 0 2 2 2 2 0 0 0-2 2v3a2 2 0 0 1-2 2h-2"/></svg></div><h3 data-en="API Automation" data-es="Automatización de APIs">API Automation</h3><p data-en="REST APIs validated on every build." data-es="APIs REST validadas en cada build.">REST APIs validated on every build.</p><span class="svc-more" data-en="View details →" data-es="Ver detalle →">View details →</span></button>
+      <button class="ccard svc" type="button" onclick="openService('performance')"><div class="num">04</div><div class="c-ico"><svg viewBox="0 0 24 24"><path d="M4.5 18a9 9 0 1 1 15 0"/><path d="M12 13l4-4"/><circle cx="12" cy="13" r="1"/></svg></div><h3 data-en="Performance Testing" data-es="Testing de Performance">Performance Testing</h3><p data-en="See how your system behaves under load." data-es="Mirá cómo se comporta tu sistema bajo carga.">See how your system behaves under load.</p><span class="svc-more" data-en="View details →" data-es="Ver detalle →">View details →</span></button>
+      <button class="ccard svc" type="button" onclick="openService('accessibility')"><div class="num">05</div><div class="c-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="4.4" r="1.6"/><path d="M5 8.5h14"/><path d="M12 8.5v6"/><path d="M9 21l3-6.5 3 6.5"/></svg></div><h3 data-en="Accessibility" data-es="Accesibilidad">Accessibility</h3><p data-en="Software everyone can use — WCAG 2.1 audited." data-es="Software que todos pueden usar — auditado WCAG 2.1.">Software everyone can use — WCAG 2.1 audited.</p><span class="svc-more" data-en="View details →" data-es="Ver detalle →">View details →</span></button>
+      <button class="ccard svc soon" type="button" onclick="openService('pentesting')"><span class="svc-badge" data-en="Coming soon" data-es="Próximamente">Coming soon</span><div class="num">06</div><div class="c-ico"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3 data-en="Pen Testing" data-es="Pen Testing">Pen Testing</h3><p data-en="Security testing against the OWASP Top 10." data-es="Testing de seguridad contra el OWASP Top 10.">Security testing against the OWASP Top 10.</p><span class="svc-more" data-en="View details →" data-es="Ver detalle →">View details →</span></button>
+    </div>
+
+    <!-- General services -->
+    <div class="svc-head second">
+      <span class="svc-tag" data-en="Build &amp; design" data-es="Diseño y desarrollo">Build &amp; design</span>
+      <h3 data-en="Everything else we craft" data-es="Todo lo demás que construimos">Everything else we craft</h3>
+    </div>
+    <div class="cards svc-general">
+      <button class="ccard svc c" type="button" onclick="openService('web-design')"><div class="num">07</div><div class="c-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></div><h3 data-en="Web Design" data-es="Diseño Web">Web Design</h3><p data-en="From landing page to e-commerce — 100% responsive." data-es="De landing page a e-commerce — 100% responsive.">From landing page to e-commerce — 100% responsive.</p><span class="svc-more" data-en="View details →" data-es="Ver detalle →">View details →</span></button>
+      <button class="ccard svc" type="button" onclick="openService('crm')"><div class="num">08</div><div class="c-ico"><svg viewBox="0 0 24 24"><path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3Z"/><path d="M4 7v5c0 1.7 3.6 3 8 3s8-1.3 8-3V7"/><path d="M4 12v5c0 1.7 3.6 3 8 3s8-1.3 8-3v-5"/></svg></div><h3 data-en="CRM &amp; ERP" data-es="CRM &amp; ERP">CRM &amp; ERP</h3><p data-en="Clients, sales, operations, inventory &amp; finance in one place." data-es="Clientes, ventas, operaciones, stock y finanzas en un solo lugar.">Clients, sales, operations, inventory &amp; finance in one place.</p><span class="svc-more" data-en="View details →" data-es="Ver detalle →">View details →</span></button>
+      <button class="ccard svc l" type="button" onclick="openService('custom')"><div class="num">09</div><div class="c-ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-.7-.7-2 2-2.6Z"/></svg></div><h3 data-en="Custom Tools" data-es="Herramientas a medida">Custom Tools</h3><p data-en="Have an idea? We can make it true." data-es="¿Tenés una idea? La hacemos realidad.">Have an idea? We can make it true.</p><span class="svc-more" data-en="View details →" data-es="Ver detalle →">View details →</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- OUR TOOLS -->
+<section class="block alt" id="herramientas">
+  <span class="orb orb-c f1" style="width:420px;height:420px;top:-140px;left:-120px"></span>
+  <div class="wrap">
+    <div class="center"><span class="eyebrow" data-en="Built in-house" data-es="Hecho por nosotros">Built in-house</span><h2 data-en="The tools we build &amp; use" data-es="Las herramientas que construimos y usamos">The tools we build &amp; use</h2><p class="lead" data-en="We don't just ship software — we engineer our own tools to build it better. Two of them power everything we do." data-es="No solo entregamos software — construimos nuestras propias herramientas para hacerlo mejor. Dos de ellas impulsan todo lo que hacemos.">We don't just ship software — we engineer our own tools to build it better. Two of them power everything we do.</p></div>
+    <div class="tools-band">
+      <div class="tool-card">
+        <div class="tool-top"><span class="tool-ico">⏱</span><div><h3>Khronos</h3><span class="tool-kicker" data-en="QA automation framework" data-es="Framework de automatización QA">QA automation framework</span></div></div>
+        <p data-en="A production-grade QA framework that unifies web, mobile, API, performance, security and accessibility testing in one Python stack — with a crawler that auto-generates page objects, self-healing locators and a live dashboard. It powers our Automation suite, and it's available as a standalone subscription." data-es="Un framework de QA de nivel producción que unifica testing web, mobile, API, performance, seguridad y accesibilidad en un solo stack de Python — con un crawler que genera page objects solo, locators auto-reparables y un dashboard en vivo. Impulsa nuestra suite de automatización, y está disponible como suscripción aparte.">A production-grade QA framework that unifies web, mobile, API, performance, security and accessibility testing in one Python stack — with a crawler that auto-generates page objects, self-healing locators and a live dashboard. It powers our Automation suite, and it's available as a standalone subscription.</p>
+        <div class="tool-chips"><span>Playwright</span><span>Appium</span><span>K6 · Locust</span><span>OWASP</span><span>WCAG 2.1</span><span>Allure</span></div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-top"><span class="tool-ico">🎏</span><div><h3>Koibranch</h3><span class="tool-kicker" data-en="Git guardian" data-es="Guardián de git">Git guardian</span></div></div>
+        <p data-en="Our git guardian: it visualizes a repo's history as a colored graph, catches conflicts before they hurt, reviews changes pre-push and stops teammates from stepping on each other's work. It's what keeps our teamwork clean and our releases safe." data-es="Nuestro guardián de git: visualiza la historia de un repo como un grafo de colores, detecta conflictos antes de que duelan, revisa los cambios antes de pushear y evita que el equipo se pise. Es lo que mantiene nuestro trabajo en equipo prolijo y nuestros releases seguros.">Our git guardian: it visualizes a repo's history as a colored graph, catches conflicts before they hurt, reviews changes pre-push and stops teammates from stepping on each other's work. It's what keeps our teamwork clean and our releases safe.</p>
+        <div class="tool-chips"><span>Git graph</span><span data-en="Conflict radar" data-es="Radar de conflictos">Conflict radar</span><span data-en="Pre-push review" data-es="Revisión pre-push">Pre-push review</span><span data-en="Anti-collision" data-es="Anti-colisión">Anti-collision</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -288,6 +328,20 @@
     <span class="trole" id="tmRole"></span>
     <p id="tmBio"></p>
     <div id="tmExtra"></div>
+  </div>
+</div>
+
+<!-- SERVICE MODAL -->
+<div class="tmodal svc-modal" id="serviceModal" hidden>
+  <div class="tmodal-backdrop" onclick="closeService()"></div>
+  <div class="tmodal-card" role="dialog" aria-modal="true">
+    <button class="tmodal-close" onclick="closeService()" aria-label="Close">✕</button>
+    <span class="svc-modal-ico" id="svcIco" aria-hidden="true"></span>
+    <span class="svc-modal-tag" id="svcTag"></span>
+    <h3 id="svcName"></h3>
+    <p id="svcDesc"></p>
+    <div class="svc-modal-body" id="svcBody"></div>
+    <div class="svc-modal-foot" id="svcFoot"></div>
   </div>
 </div>
 

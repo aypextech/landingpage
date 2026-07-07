@@ -65,7 +65,7 @@ setLang(LANG);
 
 // ---- Reveal al scrollear ----
 (function () {
-  var els = document.querySelectorAll('.info-cell, .center, .ccard, .step, .feature .f-media, .feature .f-copy, .stat, .tst, .faq-item, .foot-grid > div');
+  var els = document.querySelectorAll('.info-cell, .center, .svc-head, .ccard, .tool-card, .step, .feature .f-media, .feature .f-copy, .stat, .tst, .faq-item, .foot-grid > div');
   els.forEach(function (el) { el.classList.add('reveal'); });
   ['.cards .ccard', '.steps .step', '.stats .stat'].forEach(function (sel) {
     document.querySelectorAll(sel).forEach(function (el, i) { el.style.transitionDelay = (i * 0.08) + 's'; });
@@ -195,6 +195,123 @@ document.querySelectorAll('.tavatar[data-img]').forEach(function (av) {
   }
   tryLoad(0);
 });
+
+// ---- Servicios (modales) ----
+var K_FOOT = { en: 'Part of the Khronos suite — available tailor-made, or license Khronos directly.', es: 'Parte de la suite Khronos — disponible a medida, o licenciando Khronos directamente.' };
+var SERVICE = {
+  web: { ico: '🌐', tag_en: 'Khronos suite', tag_es: 'Suite Khronos',
+    name_en: 'Web Automation', name_es: 'Automatización Web',
+    desc_en: 'End-to-end web testing that runs on every release — so bugs never reach your users.',
+    desc_es: 'Testing web end-to-end que corre en cada release — para que los bugs nunca lleguen a tus usuarios.',
+    feats: [
+      { en: '<b>Multi-browser</b> — Chromium, Firefox &amp; WebKit/Safari.', es: '<b>Multi-browser</b> — Chromium, Firefox y WebKit/Safari.' },
+      { en: '<b>Auto-generated Page Objects</b> — our crawler logs in and maps your whole app.', es: '<b>Page Objects automáticos</b> — nuestro crawler se loguea y mapea toda tu app.' },
+      { en: '<b>Self-healing locators</b> — tests survive UI changes without breaking.', es: '<b>Locators auto-reparables</b> — los tests sobreviven a cambios de UI sin romperse.' },
+      { en: '<b>Rich reports</b> — Allure with history, trends &amp; flaky detection.', es: '<b>Reportes ricos</b> — Allure con historial, tendencias y detección de flaky.' }
+    ], foot_en: K_FOOT.en, foot_es: K_FOOT.es },
+  mobile: { ico: '📱', tag_en: 'Khronos suite', tag_es: 'Suite Khronos',
+    name_en: 'Mobile Automation', name_es: 'Automatización Mobile',
+    desc_en: 'Native app testing on real Android and iOS — the same quality bar on every device.',
+    desc_es: 'Testing de apps nativas en Android e iOS reales — la misma vara de calidad en cada dispositivo.',
+    feats: [
+      { en: '<b>Android</b> — Appium + UiAutomator2.', es: '<b>Android</b> — Appium + UiAutomator2.' },
+      { en: '<b>iOS</b> — Appium + XCUITest.', es: '<b>iOS</b> — Appium + XCUITest.' },
+      { en: '<b>Native flows</b> — gestures, permissions &amp; device farms.', es: '<b>Flujos nativos</b> — gestos, permisos y granjas de dispositivos.' },
+      { en: '<b>One pipeline</b> — same reports &amp; CI as web.', es: '<b>Un solo pipeline</b> — mismos reportes y CI que web.' }
+    ], foot_en: K_FOOT.en, foot_es: K_FOOT.es },
+  api: { ico: '🔌', tag_en: 'Khronos suite', tag_es: 'Suite Khronos',
+    name_en: 'API Automation', name_es: 'Automatización de APIs',
+    desc_en: 'REST APIs validated on every build — contracts that never silently break.',
+    desc_es: 'APIs REST validadas en cada build — contratos que nunca se rompen en silencio.',
+    feats: [
+      { en: '<b>REST endpoint testing</b> — full request/response coverage.', es: '<b>Testing de endpoints REST</b> — cobertura completa de request/response.' },
+      { en: '<b>Schema &amp; contract validation</b> — catch breaking changes early.', es: '<b>Validación de schema y contratos</b> — detecta cambios rompientes temprano.' },
+      { en: '<b>Data-driven</b> — realistic fixtures for real edge cases.', es: '<b>Data-driven</b> — fixtures realistas para casos borde reales.' },
+      { en: '<b>CI-ready</b> — parallel execution on every commit.', es: '<b>Listo para CI</b> — ejecución paralela en cada commit.' }
+    ], foot_en: K_FOOT.en, foot_es: K_FOOT.es },
+  performance: { ico: '🚀', tag_en: 'Khronos suite', tag_es: 'Suite Khronos',
+    name_en: 'Performance Testing', name_es: 'Testing de Performance',
+    desc_en: 'Know exactly how your system behaves under load — before your users do.',
+    desc_es: 'Sabé exactamente cómo se comporta tu sistema bajo carga — antes que tus usuarios.',
+    feats: [
+      { en: '<b>K6 &amp; Locust</b> — industry-standard load engines.', es: '<b>K6 y Locust</b> — motores de carga estándar de la industria.' },
+      { en: '<b>Profiles</b> — smoke, stress, soak &amp; spike.', es: '<b>Perfiles</b> — smoke, stress, soak y spike.' },
+      { en: '<b>Breakpoint analysis</b> — latency, throughput &amp; limits.', es: '<b>Análisis de límites</b> — latencia, throughput y puntos de quiebre.' },
+      { en: '<b>Actionable reports</b> — know what to fix and why.', es: '<b>Reportes accionables</b> — sabé qué arreglar y por qué.' }
+    ], foot_en: K_FOOT.en, foot_es: K_FOOT.es },
+  accessibility: { ico: '♿', tag_en: 'Khronos suite', tag_es: 'Suite Khronos',
+    name_en: 'Accessibility', name_es: 'Accesibilidad',
+    desc_en: 'Software everyone can use — audited against WCAG 2.1 and real inclusive scenarios.',
+    desc_es: 'Software que todos pueden usar — auditado contra WCAG 2.1 y escenarios inclusivos reales.',
+    feats: [
+      { en: '<b>WCAG 2.1 audits</b> — automated, on every build.', es: '<b>Auditorías WCAG 2.1</b> — automáticas, en cada build.' },
+      { en: '<b>Inclusive coverage</b> — visual, auditory, motor &amp; cognitive.', es: '<b>Cobertura inclusiva</b> — visual, auditiva, motriz y cognitiva.' },
+      { en: '<b>Remediation reports</b> — clear fixes, prioritized.', es: '<b>Reportes de remediación</b> — arreglos claros y priorizados.' },
+      { en: '<b>Reach more users</b> — accessible is also better UX &amp; SEO.', es: '<b>Llegá a más usuarios</b> — accesible es también mejor UX y SEO.' }
+    ], foot_en: K_FOOT.en, foot_es: K_FOOT.es },
+  pentesting: { ico: '🛡', soon: true, tag_en: 'Coming soon', tag_es: 'Próximamente',
+    name_en: 'Pen Testing', name_es: 'Pen Testing',
+    desc_en: 'Security testing against the OWASP Top 10 — coming soon to the Khronos suite.',
+    desc_es: 'Testing de seguridad contra el OWASP Top 10 — próximamente en la suite Khronos.',
+    feats: [
+      { en: '<b>OWASP Top 10</b> — coverage of the most critical risks.', es: '<b>OWASP Top 10</b> — cobertura de los riesgos más críticos.' },
+      { en: '<b>Automated scans</b> — vulnerabilities surfaced early.', es: '<b>Escaneos automáticos</b> — vulnerabilidades detectadas temprano.' },
+      { en: '<b>On the roadmap</b> — in active development for Khronos.', es: '<b>En el roadmap</b> — en desarrollo activo para Khronos.' }
+    ], foot_en: 'In active development — want early access? Let\'s talk.', foot_es: 'En desarrollo activo — ¿querés acceso anticipado? Hablemos.' },
+  'web-design': { ico: '🎨', tag_en: 'Design &amp; build', tag_es: 'Diseño y desarrollo',
+    name_en: 'Web Design', name_es: 'Diseño Web',
+    desc_en: 'From a single landing page to a full e-commerce — fast, beautiful and 100% responsive.',
+    desc_es: 'De una simple landing page a un e-commerce completo — rápido, hermoso y 100% responsive.',
+    feats: [
+      { en: '<b>Landing pages</b> — crafted to convert.', es: '<b>Landing pages</b> — diseñadas para convertir.' },
+      { en: '<b>E-commerce</b> — full online stores, ready to sell.', es: '<b>E-commerce</b> — tiendas online completas, listas para vender.' },
+      { en: '<b>100% responsive</b> — flawless on every screen.', es: '<b>100% responsive</b> — impecable en cada pantalla.' },
+      { en: '<b>Built to last</b> — fast, SEO-friendly and easy to grow.', es: '<b>Hecho para durar</b> — rápido, SEO-friendly y fácil de escalar.' }
+    ], foot_en: '<a class="btn solid" href="#contacto" onclick="closeService()">Start your project</a>', foot_es: '<a class="btn solid" href="#contacto" onclick="closeService()">Empezá tu proyecto</a>' },
+  crm: { ico: '📊', tag_en: 'Flagship product', tag_es: 'Producto estrella',
+    name_en: 'CRM &amp; ERP', name_es: 'CRM &amp; ERP',
+    desc_en: 'Run clients, sales, operations, inventory and finance in one platform — molded to your business, not the other way around.',
+    desc_es: 'Gestioná clientes, ventas, operaciones, stock y finanzas en una sola plataforma — amoldada a tu negocio, y no al revés.',
+    feats: [
+      { en: '<b>Clients &amp; sales</b> — profiles, pipeline, payments &amp; history.', es: '<b>Clientes y ventas</b> — fichas, pipeline, pagos e historial.' },
+      { en: '<b>Inventory &amp; finance</b> — stock, invoicing &amp; reporting.', es: '<b>Stock y finanzas</b> — inventario, facturación y reportes.' },
+      { en: '<b>Automation</b> — reminders, workflows &amp; reports on autopilot.', es: '<b>Automatización</b> — recordatorios, flujos y reportes en piloto automático.' },
+      { en: '<b>Web + mobile</b> — secure access from anywhere.', es: '<b>Web + mobile</b> — acceso seguro desde cualquier lugar.' }
+    ], foot_en: '<a class="btn solid" href="#producto" onclick="closeService()">Meet the Aypex CRM</a>', foot_es: '<a class="btn solid" href="#producto" onclick="closeService()">Conocé el CRM de Aypex</a>' },
+  custom: { ico: '🛠', tag_en: 'Tailor-made', tag_es: 'A medida',
+    name_en: 'Custom Tools', name_es: 'Herramientas a medida',
+    desc_en: 'Have an idea? We can make it true. Custom tools built around exactly how you work.',
+    desc_es: '¿Tenés una idea? La hacemos realidad. Herramientas a medida construidas alrededor de cómo trabajás.',
+    feats: [
+      { en: '<b>Quotation &amp; budgeting</b> — tools that speed up your sales.', es: '<b>Cotizaciones y presupuestos</b> — herramientas que aceleran tus ventas.' },
+      { en: '<b>Client &amp; ops portals</b> — self-service for your customers and team.', es: '<b>Portales de clientes y operaciones</b> — autogestión para tus clientes y equipo.' },
+      { en: '<b>Dashboards</b> — the numbers that matter, at a glance.', es: '<b>Dashboards</b> — los números que importan, de un vistazo.' },
+      { en: '<b>Automations</b> — anything repetitive, off your plate.', es: '<b>Automatizaciones</b> — todo lo repetitivo, fuera de tu mesa.' }
+    ], foot_en: '<a class="btn solid" href="#contacto" onclick="closeService()">Tell us your idea</a>', foot_es: '<a class="btn solid" href="#contacto" onclick="closeService()">Contanos tu idea</a>' }
+};
+function openService(id) {
+  var s = SERVICE[id]; if (!s) return;
+  var es = (typeof LANG !== 'undefined' && LANG === 'es');
+  var card = document.querySelector('#serviceModal .tmodal-card');
+  if (card) card.classList.toggle('is-soon', !!s.soon);
+  document.getElementById('svcIco').textContent = s.ico || '';
+  document.getElementById('svcTag').innerHTML = es ? s.tag_es : s.tag_en;
+  document.getElementById('svcName').innerHTML = es ? s.name_es : s.name_en;
+  document.getElementById('svcDesc').innerHTML = es ? s.desc_es : s.desc_en;
+  var body = '';
+  if (s.feats && s.feats.length) {
+    body = '<ul class="svc-flist">' + s.feats.map(function (f) { return '<li>' + (es ? f.es : f.en) + '</li>'; }).join('') + '</ul>';
+  }
+  document.getElementById('svcBody').innerHTML = body;
+  document.getElementById('svcFoot').innerHTML = (es ? s.foot_es : s.foot_en) || '';
+  document.getElementById('serviceModal').hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+function closeService() {
+  var m = document.getElementById('serviceModal'); if (m) m.hidden = true;
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeService(); });
 
 // ---- FX: hue al scrollear + glow que sigue el cursor ----
 (function () {
