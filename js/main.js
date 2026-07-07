@@ -131,7 +131,10 @@ var TEAM = {
     bio_es: 'CTO y líder de ingeniería de Aypex. Ezequiel convierte la visión de producto en arquitectura escalable y confiable en web y mobile, definiendo la dirección técnica, los estándares y el stack detrás de todo lo que construye el equipo.' },
   dante: { name: 'Dante Roldan', initial: 'D', role_en: 'Software Engineer', role_es: 'Ingeniero de Software',
     bio_en: 'Software engineer at Aypex, building the products and custom solutions our clients rely on — from CRM features to automations and polished, high-performance web apps.',
-    bio_es: 'Ingeniero de software en Aypex. Construye los productos y soluciones a medida en los que confían nuestros clientes — desde funcionalidades del CRM hasta automatizaciones y web apps pulidas y de alto rendimiento.' }
+    bio_es: 'Ingeniero de software en Aypex. Construye los productos y soluciones a medida en los que confían nuestros clientes — desde funcionalidades del CRM hasta automatizaciones y web apps pulidas y de alto rendimiento.' },
+  sebastian: { name: 'Sebastian Couto', initial: 'S', role_en: 'Head of Quality Engineering', role_es: 'Jefe de Ingeniería de Calidad',
+    bio_en: 'Sebastian Couto is a quality engineering leader with more than a decade of experience building dependable automation strategies for complex digital products. He has worked at the intersection of development, testing and delivery, designing scalable test frameworks, CI/CD pipelines, API validation processes and end-to-end quality systems that help teams release faster without losing control over quality. His approach combines technical rigor with business awareness, turning quality into a real enabler of product growth, reliability and customer trust. He has led initiatives across web, mobile and backend ecosystems and is known for creating structured, measurable processes that make teams more confident, efficient and predictable.',
+    bio_es: 'Sebastián Couto es un líder en ingeniería de calidad con más de una década de experiencia creando estrategias de automatización fiables para productos digitales complejos. Ha trabajado en la intersección entre desarrollo, testing y entrega, diseñando frameworks de pruebas escalables, pipelines CI/CD, procesos de validación de APIs y sistemas de calidad end-to-end que ayudan a los equipos a lanzar más rápido sin perder control sobre la calidad. Su enfoque combina rigor técnico con visión de negocio, convirtiendo la calidad en un verdadero motor de crecimiento, confiabilidad y confianza del cliente. Ha liderado iniciativas en ecosistemas web, mobile y backend y es conocido por crear procesos estructurados y medibles que hacen a los equipos más seguros, eficientes y predecibles.' }
 };
 function openTeam(id) {
   var t = TEAM[id]; if (!t) return;
@@ -150,12 +153,18 @@ function openTeam(id) {
   }
   var ex = document.getElementById('tmExtra'); if (ex) ex.innerHTML = extra;
   var av = document.getElementById('tmAvatar');
+  av.classList.toggle('sebastian-avatar', id === 'sebastian');
   av.textContent = ''; av.style.backgroundImage = '';
-  var src = 'assets/team/' + id + '.jpg';
-  var im = new Image();
-  im.onload = function () { av.style.backgroundImage = "url('" + src + "')"; };
-  im.onerror = function () { av.textContent = t.initial; };
-  im.src = src;
+  var candidates = ['assets/team/' + id + '.jpg', 'assets/team/' + id + '.png', 'assets/team/' + id + '.jpeg'];
+  function tryLoad(i) {
+    if (i >= candidates.length) { av.textContent = t.initial; return; }
+    var src = candidates[i];
+    var im = new Image();
+    im.onload = function () { av.style.backgroundImage = "url('" + src + "')"; };
+    im.onerror = function () { tryLoad(i + 1); };
+    im.src = src;
+  }
+  tryLoad(0);
   document.getElementById('teamModal').hidden = false;
   document.body.style.overflow = 'hidden';
 }
@@ -167,9 +176,24 @@ document.addEventListener('keydown', function (e) { if (e.key === 'Escape') clos
 // Cargar fotos del equipo si existen (si no, queda la inicial)
 document.querySelectorAll('.tavatar[data-img]').forEach(function (av) {
   var src = av.getAttribute('data-img'); if (!src) return;
-  var im = new Image();
-  im.onload = function () { av.style.backgroundImage = "url('" + src + "')"; av.classList.add('has-img'); };
-  im.src = src;
+  var base = src.replace(/\.(jpe?g|png)$/i, '');
+  var candidates = [src];
+  var ext = (src.match(/\.(jpe?g|png)$/i) || [])[1];
+  if (ext) {
+    var lower = ext.toLowerCase();
+    if (lower === 'jpg' || lower === 'jpeg') candidates.push(base + '.png');
+    if (lower === 'png') candidates.push(base + '.jpg');
+    if (lower !== 'jpeg') candidates.push(base + '.jpeg');
+  }
+  function tryLoad(i) {
+    if (i >= candidates.length) { av.textContent = av.getAttribute('data-initial') || ''; av.classList.remove('has-img'); return; }
+    var url = candidates[i];
+    var im = new Image();
+    im.onload = function () { av.style.backgroundImage = "url('" + url + "')"; av.classList.add('has-img'); };
+    im.onerror = function () { tryLoad(i + 1); };
+    im.src = url;
+  }
+  tryLoad(0);
 });
 
 // ---- FX: hue al scrollear + glow que sigue el cursor ----
