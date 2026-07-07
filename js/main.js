@@ -313,6 +313,40 @@ function closeService() {
 }
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeService(); });
 
+// ---- Herramientas (Khronos / Koibranch) modales ----
+var TOOLS = {
+  khronos: { img: 'assets/tools/khronos.png', name: 'Khronos',
+    kicker_en: 'QA automation framework', kicker_es: 'Framework de automatización QA',
+    desc_en: 'A production-grade QA framework that unifies web, mobile, API, performance, security and accessibility testing in one Python stack — with a crawler that auto-generates page objects, self-healing locators and a live dashboard. It powers our Automation suite, and it\'s available as a standalone subscription.',
+    desc_es: 'Un framework de QA de nivel producción que unifica testing web, mobile, API, performance, seguridad y accesibilidad en un solo stack de Python — con un crawler que genera page objects solo, locators auto-reparables y un dashboard en vivo. Impulsa nuestra suite de automatización, y está disponible como suscripción aparte.',
+    chips: ['Playwright', 'Maestro', 'K6 · Locust', 'OWASP', 'WCAG 2.1', 'Allure'] },
+  koibranch: { img: 'assets/tools/koibranch.png', name: 'Koibranch',
+    kicker_en: 'Git guardian', kicker_es: 'Guardián de git',
+    desc_en: 'Our git guardian: it visualizes a repo\'s history as a colored graph, catches conflicts before they hurt, reviews changes pre-push and stops teammates from stepping on each other\'s work. It\'s what keeps our teamwork clean and our releases safe.',
+    desc_es: 'Nuestro guardián de git: visualiza la historia de un repo como un grafo de colores, detecta conflictos antes de que duelan, revisa los cambios antes de pushear y evita que el equipo se pise. Es lo que mantiene nuestro trabajo en equipo prolijo y nuestros releases seguros.',
+    chips: ['Git graph', { en: 'Conflict radar', es: 'Radar de conflictos' }, { en: 'Pre-push review', es: 'Revisión pre-push' }, { en: 'Anti-collision', es: 'Anti-colisión' }] }
+};
+function openTool(id) {
+  var t = TOOLS[id]; if (!t) return;
+  var es = (typeof LANG !== 'undefined' && LANG === 'es');
+  var img = document.getElementById('tlImg');
+  img.src = t.img; img.alt = t.name + ' logo';
+  document.getElementById('tlKicker').textContent = es ? t.kicker_es : t.kicker_en;
+  document.getElementById('tlName').textContent = t.name;
+  document.getElementById('tlDesc').textContent = es ? t.desc_es : t.desc_en;
+  document.getElementById('tlChips').innerHTML = t.chips.map(function (c) {
+    var lbl = (typeof c === 'string') ? c : (es ? c.es : c.en);
+    return '<span>' + lbl + '</span>';
+  }).join('');
+  document.getElementById('toolModal').hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+function closeTool() {
+  var m = document.getElementById('toolModal'); if (m) m.hidden = true;
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeTool(); });
+
 // ---- FX: hue al scrollear + glow que sigue el cursor ----
 (function () {
   var root = document.documentElement, cg = document.querySelector('.cursor-glow');

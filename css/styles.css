@@ -161,17 +161,28 @@ section#servicios .ccard.svc.soon{opacity:.9;}
 
 /* ----- Our tools band ----- */
 .tools-band{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:52px;}
-.tool-card{background:linear-gradient(160deg,var(--surface),var(--bg2));border:1px solid var(--line);border-radius:20px;padding:32px 30px;transition:transform .45s cubic-bezier(.22,.61,.36,1),box-shadow .45s,border-color .45s;}
+.tool-card{background:linear-gradient(160deg,var(--surface),var(--bg2));border:1px solid var(--line);border-radius:20px;padding:38px 30px 34px;text-align:center;transition:transform .45s cubic-bezier(.22,.61,.36,1),box-shadow .45s,border-color .45s;}
 .tool-card:hover{transform:translateY(-6px);box-shadow:0 30px 64px rgba(0,0,0,.5);border-color:rgba(255,255,255,.2);}
-.tool-top{display:flex;align-items:center;gap:22px;margin-bottom:20px;}
-.tool-ico{width:150px;height:150px;flex:none;display:grid;place-items:center;font-size:28px;border-radius:24px;background:#000;border:1px solid rgba(255,255,255,.12);overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.55);}
-.tool-ico img{width:100%;height:100%;object-fit:cover;}
-.tool-top h3{font-size:28px;}
-.tool-top h3{font-size:24px;color:#fff;font-weight:600;letter-spacing:-.3px;}
-.tool-kicker{display:block;font-family:var(--sans);font-size:11.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-top:3px;}
-.tool-card>p{color:var(--muted);font-size:14.5px;font-weight:300;line-height:1.7;}
-.tool-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+/* 9:16 clickable logo tile with reflection */
+.tool-shot{position:relative;display:inline-block;width:172px;aspect-ratio:9/16;border:none;background:none;padding:0;cursor:pointer;margin:0 auto 96px;}
+.tool-shot img{width:100%;height:100%;object-fit:contain;background:#000;border-radius:20px;border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 48px rgba(0,0,0,.55);transition:transform .45s cubic-bezier(.22,.61,.36,1),box-shadow .45s;-webkit-box-reflect:below 8px linear-gradient(transparent 66%,rgba(255,255,255,.22));}
+.tool-shot:hover img{transform:translateY(-5px) scale(1.02);box-shadow:0 30px 64px rgba(0,0,0,.62);}
+.tool-shot:focus-visible{outline:2px solid var(--gold);outline-offset:5px;border-radius:20px;}
+.tool-shot-more{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);font-family:var(--sans);font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:#0a0b10;background:linear-gradient(120deg,#ffffff,#d7dbe6);padding:7px 15px;border-radius:22px;box-shadow:0 8px 22px rgba(0,0,0,.5);white-space:nowrap;transition:transform .35s,opacity .35s;}
+.tool-shot:hover .tool-shot-more{transform:translateX(-50%) translateY(-3px);}
+.tool-card h3{font-size:26px;color:#fff;font-weight:600;letter-spacing:-.3px;}
+.tool-kicker{display:block;font-family:var(--sans);font-size:11.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-top:4px;}
+.tool-card>p{color:var(--muted);font-size:14.5px;font-weight:300;line-height:1.7;margin-top:12px;}
+.tool-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:20px;}
 .tool-chips span{font-family:var(--sans);font-size:11.5px;letter-spacing:.5px;padding:6px 13px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--silver2);}
+
+/* Tool modal (enlarged 9:16 logo + full read) */
+.tool-modal .tmodal-card{max-width:440px;text-align:center;}
+.tool-modal-shot{display:block;width:196px;aspect-ratio:9/16;margin:6px auto 108px;}
+.tool-modal-shot img{width:100%;height:100%;object-fit:contain;background:#000;border-radius:20px;border:1px solid rgba(255,255,255,.14);box-shadow:0 22px 54px rgba(0,0,0,.62);-webkit-box-reflect:below 8px linear-gradient(transparent 66%,rgba(255,255,255,.22));}
+.tool-modal #tlName{font-size:26px;color:#fff;margin-bottom:12px;font-weight:500;}
+.tool-modal #tlDesc{color:var(--muted);font-weight:300;font-size:15px;text-align:center;line-height:1.7;}
+.tool-modal .tool-chips{margin-top:22px;}
 
 /* ----- Service modal ----- */
 .svc-modal .tmodal-card{max-width:560px;text-align:center;}
