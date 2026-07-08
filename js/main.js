@@ -16,9 +16,11 @@ document.querySelectorAll('#menu a').forEach(function (a) {
 });
 
 // ---- Idioma: Inglés <-> Español ----
-var LANG = 'en';
-try { LANG = localStorage.getItem('ax_lang') || 'en'; } catch (e) {}
-function setLang(l) {
+// Español por defecto. Clave de storage nueva (v2) para descartar el 'en'
+// que la versión vieja guardaba en cada carga y así resetear a todos a ES.
+var LANG = 'es';
+try { LANG = localStorage.getItem('ax_lang_v2') || 'es'; } catch (e) {}
+function setLang(l, persist) {
   LANG = (l === 'es') ? 'es' : 'en';
   document.documentElement.lang = LANG;
   document.body.classList.toggle('es', LANG === 'es');
@@ -28,10 +30,11 @@ function setLang(l) {
   document.querySelectorAll('[data-ph-en]').forEach(function (el) {
     var v = el.getAttribute('data-ph-' + LANG); if (v != null) el.placeholder = v;
   });
-  try { localStorage.setItem('ax_lang', LANG); } catch (e) {}
+  // Solo persiste cuando el usuario elige el idioma explícitamente.
+  if (persist) { try { localStorage.setItem('ax_lang_v2', LANG); } catch (e) {} }
 }
 document.getElementById('langToggle').addEventListener('click', function () {
-  setLang(LANG === 'en' ? 'es' : 'en');
+  setLang(LANG === 'en' ? 'es' : 'en', true);
   document.getElementById('menu').classList.remove('open');
 });
 setLang(LANG);
