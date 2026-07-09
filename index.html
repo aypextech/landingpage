@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="assets/logo-final.png">
-<link rel="stylesheet" href="css/styles.css?v=19">
+<link rel="stylesheet" href="css/styles.css?v=20">
 </head>
 <body>
 
@@ -100,6 +100,51 @@
       <div class="cov-item"><b>Beta</b><span class="cov-l" data-en="Performance" data-es="Performance">Performance</span><span class="cov-n" data-en="in testing" data-es="en pruebas">in testing</span></div>
     </div>
     <p class="cov-note" data-en="Typical figures, not guarantees — how much gets generated depends on your app's scope and the context you provide." data-es="Números típicos, no garantías — cuánto se genera depende del alcance de tu app y del contexto que aportes.">Typical figures, not guarantees — how much gets generated depends on your app's scope and the context you provide.</p>
+
+    <!-- Khronos in action — futuristic carousel -->
+    <div class="center cov-head"><span class="eyebrow" data-en="See it in action" data-es="Miralo en acción">See it in action</span></div>
+    <div class="kcar" id="kcar" aria-roledescription="carousel" aria-label="Khronos screenshots">
+      <div class="kcar-stage" id="kcarStage">
+        <button class="kcar-nav kcar-prev" id="kcarPrev" type="button" aria-label="Previous">&#8249;</button>
+        <div class="kcar-track" id="kcarTrack">
+          <figure class="kcar-slide" data-cap-en="Command center — every layer of your product, one dashboard" data-cap-es="Centro de comando — cada capa de tu producto, un solo panel">
+            <div class="kcar-frame"><img src="assets/khronos/04_command_center.webp" alt="Khronos command center" loading="lazy"><span class="kcar-glare"></span></div>
+            <div class="kcar-mirror"><img src="assets/khronos/04_command_center.webp" alt="" aria-hidden="true" loading="lazy"></div>
+          </figure>
+          <figure class="kcar-slide" data-cap-en="Live execution — real-time telemetry with self-healing selectors" data-cap-es="Ejecución en vivo — telemetría en tiempo real con selectores auto-reparables">
+            <div class="kcar-frame"><img src="assets/khronos/08_execution_live.webp" alt="Khronos live test execution" loading="lazy"><span class="kcar-glare"></span></div>
+            <div class="kcar-mirror"><img src="assets/khronos/08_execution_live.webp" alt="" aria-hidden="true" loading="lazy"></div>
+          </figure>
+          <figure class="kcar-slide" data-cap-en="90 tests, 3 browsers, zero failures — release with confidence" data-cap-es="90 pruebas, 3 navegadores, cero fallas — lanzá con confianza">
+            <div class="kcar-frame"><img src="assets/khronos/09_execution_passed.webp" alt="Khronos test run passed" loading="lazy"><span class="kcar-glare"></span></div>
+            <div class="kcar-mirror"><img src="assets/khronos/09_execution_passed.webp" alt="" aria-hidden="true" loading="lazy"></div>
+          </figure>
+          <figure class="kcar-slide" data-cap-en="API warm-up — virtual users ramping from 1 to 100, bottlenecks exposed" data-cap-es="Warm-up de APIs — usuarios virtuales de 1 a 100, cuellos de botella al descubierto">
+            <div class="kcar-frame"><img src="assets/khronos/10_api_warmup_ramp.webp" alt="Khronos API warm-up ramp" loading="lazy"><span class="kcar-glare"></span></div>
+            <div class="kcar-mirror"><img src="assets/khronos/10_api_warmup_ramp.webp" alt="" aria-hidden="true" loading="lazy"></div>
+          </figure>
+          <figure class="kcar-slide" data-cap-en="Virtual devices — power on an Android emulator from the dashboard" data-cap-es="Dispositivos virtuales — encendé un emulador Android desde el panel">
+            <div class="kcar-frame"><img src="assets/khronos/13_virtual_devices.webp" alt="Khronos virtual devices panel" loading="lazy"><span class="kcar-glare"></span></div>
+            <div class="kcar-mirror"><img src="assets/khronos/13_virtual_devices.webp" alt="" aria-hidden="true" loading="lazy"></div>
+          </figure>
+          <figure class="kcar-slide" data-cap-en="Mobile flows running — live device mirror and logs, no extra tooling" data-cap-es="Flows mobile corriendo — espejo del device y logs en vivo, sin herramientas extra">
+            <div class="kcar-frame"><img src="assets/khronos/16_device_running.webp" alt="Khronos mobile device running Maestro flows" loading="lazy"><span class="kcar-glare"></span></div>
+            <div class="kcar-mirror"><img src="assets/khronos/16_device_running.webp" alt="" aria-hidden="true" loading="lazy"></div>
+          </figure>
+          <figure class="kcar-slide" data-cap-en="Reports &amp; trends — every run tracked, flaky tests flagged" data-cap-es="Reportes y tendencias — cada corrida registrada, tests flaky señalados">
+            <div class="kcar-frame"><img src="assets/khronos/12_reports.webp" alt="Khronos reports and trends" loading="lazy"><span class="kcar-glare"></span></div>
+            <div class="kcar-mirror"><img src="assets/khronos/12_reports.webp" alt="" aria-hidden="true" loading="lazy"></div>
+          </figure>
+          <figure class="kcar-slide" data-cap-en="Your whole test taxonomy — pick a suite, hit run" data-cap-es="Toda tu taxonomía de pruebas — elegí una suite y dale run">
+            <div class="kcar-frame"><img src="assets/khronos/06_test_suites.webp" alt="Khronos test suites panel" loading="lazy"><span class="kcar-glare"></span></div>
+            <div class="kcar-mirror"><img src="assets/khronos/06_test_suites.webp" alt="" aria-hidden="true" loading="lazy"></div>
+          </figure>
+        </div>
+        <button class="kcar-nav kcar-next" id="kcarNext" type="button" aria-label="Next">&#8250;</button>
+      </div>
+      <p class="kcar-cap" id="kcarCap" aria-live="polite"></p>
+      <div class="kcar-dots" id="kcarDots" role="tablist"></div>
+    </div>
   </div>
 </section>
 
@@ -464,6 +509,6 @@
 
 <div class="scroll-fx" aria-hidden="true"></div>
 <div class="cursor-glow" aria-hidden="true"></div>
-<script src="js/main.js?v=18"></script>
+<script src="js/main.js?v=19"></script>
 </body>
 </html>

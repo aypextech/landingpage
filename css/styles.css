@@ -492,3 +492,58 @@ section.block.light#equipo .orb{opacity:.4;z-index:0;}
   .tst-slide{padding:6px 10px;}
   .tst-prev{left:-4px;}.tst-next{right:-4px;}
 }
+
+/* ══ Khronos carousel (futuristic coverflow + mirror reflection + light sweep) ══ */
+.kcar{margin-top:34px;user-select:none;}
+.kcar-stage{position:relative;max-width:980px;margin:0 auto;perspective:1400px;}
+.kcar-track{position:relative;height:0;padding-bottom:min(56.25%,542px);}
+.kcar-slide{position:absolute;inset:0;margin:0;width:min(76%,730px);left:50%;top:0;
+  transform:translateX(-50%) scale(.7);opacity:0;pointer-events:none;
+  transition:transform .75s cubic-bezier(.22,.75,.2,1),opacity .6s ease,filter .75s ease;will-change:transform,opacity;}
+.kcar-frame{position:relative;overflow:hidden;border-radius:14px;border:1px solid rgba(140,170,255,.22);
+  background:#0a0b12;box-shadow:0 24px 70px rgba(0,0,0,.65),0 0 0 1px rgba(108,140,255,.06),0 0 46px rgba(108,140,255,.10);}
+.kcar-frame img{display:block;width:100%;height:auto;}
+/* glass overlay: top light + inner edge */
+.kcar-frame::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:linear-gradient(168deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.025) 26%,transparent 44%),
+             radial-gradient(120% 90% at 50% -10%,rgba(140,170,255,.10),transparent 55%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 0 0 1px rgba(255,255,255,.03);}
+/* moving light sweep (only on the active slide) */
+.kcar-glare{position:absolute;inset:-2%;pointer-events:none;opacity:0;
+  background:linear-gradient(105deg,transparent 38%,rgba(190,215,255,.16) 46%,rgba(255,255,255,.30) 50%,rgba(190,215,255,.10) 54%,transparent 62%);
+  transform:translateX(-120%) skewX(-8deg);}
+.kcar-slide.is-active .kcar-glare{animation:kglare 5.2s ease-in-out infinite;opacity:1;}
+@keyframes kglare{0%,55%{transform:translateX(-120%) skewX(-8deg)}78%{transform:translateX(120%) skewX(-8deg)}100%{transform:translateX(120%) skewX(-8deg)}}
+/* mirror reflection under the frame */
+.kcar-mirror{position:absolute;left:0;right:0;top:100%;margin-top:2px;pointer-events:none;overflow:hidden;border-radius:14px;}
+.kcar-mirror img{display:block;width:100%;height:auto;transform:scaleY(-1);opacity:.34;filter:blur(1.6px) saturate(1.05);
+  -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.55),transparent 42%);
+          mask-image:linear-gradient(to bottom,rgba(0,0,0,.55),transparent 42%);}
+/* coverflow positions */
+.kcar-slide.is-active{transform:translateX(-50%) scale(1);opacity:1;z-index:3;pointer-events:auto;filter:none;}
+.kcar-slide.is-prev{transform:translateX(-92%) scale(.76) rotateY(16deg);opacity:.45;z-index:2;filter:blur(1.2px) brightness(.72);}
+.kcar-slide.is-next{transform:translateX(-8%)  scale(.76) rotateY(-16deg);opacity:.45;z-index:2;filter:blur(1.2px) brightness(.72);}
+.kcar-slide.is-prev,.kcar-slide.is-next{cursor:pointer;pointer-events:auto;}
+.kcar-slide.is-prev .kcar-mirror,.kcar-slide.is-next .kcar-mirror{opacity:.4;}
+/* nav arrows */
+.kcar-nav{position:absolute;top:38%;z-index:5;width:46px;height:46px;border-radius:50%;border:1px solid rgba(140,170,255,.3);
+  background:rgba(10,12,20,.55);backdrop-filter:blur(8px);color:#dfe7ff;font-size:26px;line-height:1;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:.3s;}
+.kcar-nav:hover{border-color:rgba(160,190,255,.7);box-shadow:0 0 22px rgba(108,140,255,.35);background:rgba(16,20,34,.75);}
+.kcar-prev{left:-6px;}.kcar-next{right:-6px;}
+/* caption + dots */
+.kcar-cap{text-align:center;margin:46px auto 0;max-width:640px;color:var(--muted);font-size:14.5px;font-weight:300;
+  font-family:var(--sans);letter-spacing:.3px;min-height:1.6em;transition:opacity .4s;}
+.kcar-dots{display:flex;justify-content:center;gap:9px;margin-top:14px;}
+.kcar-dots i{width:22px;height:3px;border-radius:2px;background:rgba(255,255,255,.14);cursor:pointer;transition:.35s;}
+.kcar-dots i.on{background:linear-gradient(90deg,#8fb0ff,#6c8cff);box-shadow:0 0 10px rgba(108,140,255,.55);}
+@media (max-width:860px){
+  .kcar-slide{width:88%;}
+  .kcar-slide.is-prev,.kcar-slide.is-next{opacity:0;pointer-events:none;}
+  .kcar-prev{left:2px;}.kcar-next{right:2px;}
+  .kcar-cap{margin-top:26px;padding:0 18px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .kcar-slide{transition:opacity .4s ease;}
+  .kcar-slide.is-active .kcar-glare{animation:none;opacity:0;}
+}
