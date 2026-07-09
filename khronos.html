@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khronos — Autonomous QA by Aypex</title>
+<meta name="description" content="Khronos tests every release for you — web, mobile and API, end to end. AI does the heavy lifting, a real QA engineer guarantees it. Ship fast without fear of breaking what works.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; frame-ancestors 'none'">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/logo-final.png">
+<link rel="stylesheet" href="css/styles.css?v=21">
+<style>
+  /* Khronos landing — page-specific, layered on the site's styles */
+  .kh-hero{position:relative;min-height:74vh;display:flex;align-items:center;text-align:center;overflow:hidden;padding:120px 0 70px;}
+  .kh-hero .wrap{position:relative;z-index:2;}
+  .kh-eyebrow{font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:4px;text-transform:uppercase;font-weight:600;color:#4bd4c0;}
+  .kh-hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(38px,7vw,74px);font-weight:600;letter-spacing:-2px;line-height:1;margin:20px auto 22px;max-width:900px;}
+  .kh-hero .sub{font-size:clamp(17px,2.3vw,22px);font-weight:300;color:rgba(255,255,255,.82);max-width:640px;margin:0 auto 34px;line-height:1.5;}
+  .kh-hero .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .kh-badge{display:inline-flex;align-items:center;gap:10px;margin-bottom:26px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:40px;padding:9px 18px;font-size:13px;font-weight:400;}
+  .kh-badge b{font-weight:600;}
+  .kh-hero .glow{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(60% 55% at 50% 30%,rgba(108,140,255,.16),transparent 62%),radial-gradient(50% 40% at 70% 80%,rgba(75,212,192,.1),transparent 60%);}
+
+  .kh-what{padding:70px 0;}
+  .kh-2col{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;}
+  .kh-2col h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,3.6vw,38px);font-weight:600;line-height:1.1;margin-bottom:18px;letter-spacing:-.5px;}
+  .kh-2col p{color:rgba(255,255,255,.72);font-weight:300;font-size:16px;margin-bottom:14px;}
+  .kh-2col .grad{background:linear-gradient(120deg,#fff,#a9b4e6 60%,#4bd4c0);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .kh-visual{aspect-ratio:4/3;border-radius:18px;border:1px solid rgba(255,255,255,.1);overflow:hidden;position:relative;background:#0a0b12;box-shadow:0 30px 70px rgba(0,0,0,.5);}
+  .kh-visual img{width:100%;height:100%;object-fit:cover;opacity:.92;}
+
+  .kh-steps{padding:20px 0 70px;}
+  .kh-steps .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:14px;}
+  .kh-step{background:linear-gradient(170deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:28px 24px;}
+  .kh-step .n{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:#6c8cff;letter-spacing:2px;}
+  .kh-step h3{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:600;margin:12px 0 8px;}
+  .kh-step p{color:rgba(255,255,255,.68);font-weight:300;font-size:14.5px;}
+
+  .kh-cov{padding:60px 0;}
+  .cov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:14px;}
+  .cov-card{background:linear-gradient(170deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:26px 22px;text-align:center;}
+  .cov-card .ic{font-size:26px;}
+  .cov-card h4{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin:12px 0 6px;}
+  .cov-card p{color:rgba(255,255,255,.6);font-weight:300;font-size:13px;}
+
+  .kh-why{padding:20px 0 60px;}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:14px;}
+  .why{padding:22px;border-left:2px solid rgba(108,140,255,.5);}
+  .why h4{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin-bottom:8px;}
+  .why p{color:rgba(255,255,255,.68);font-weight:300;font-size:14.5px;}
+
+  .kh-ways{padding:60px 0;}
+  .ways-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;}
+  .way{position:relative;background:linear-gradient(170deg,rgba(18,20,29,.9),rgba(9,10,15,.95));border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:34px 32px;overflow:hidden;}
+  .way::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;}
+  .way.sub::before{background:linear-gradient(90deg,#6c8cff,#4bd4c0);}
+  .way.hand::before{background:linear-gradient(90deg,#e0b877,#d89a5b);}
+  .way .tag{font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;}
+  .way.sub .tag{color:#8fb0ff;} .way.hand .tag{color:#e0b877;}
+  .way h3{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;margin:10px 0 10px;}
+  .way p{color:rgba(255,255,255,.72);font-weight:300;font-size:15px;margin-bottom:16px;}
+  .way .from{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#fff;margin-bottom:18px;}
+  .way .from small{font-size:13px;color:rgba(255,255,255,.5);font-weight:400;}
+  .way ul{list-style:none;margin-bottom:22px;}
+  .way li{font-size:14px;color:rgba(255,255,255,.72);font-weight:300;padding:5px 0 5px 22px;position:relative;}
+  .way li::before{content:"✓";position:absolute;left:0;color:#7dd88a;font-size:12px;}
+
+  .kh-final{padding:80px 0 90px;text-align:center;}
+  .kh-final h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4.4vw,44px);font-weight:600;letter-spacing:-.8px;margin-bottom:16px;}
+  .kh-final p{color:rgba(255,255,255,.72);font-weight:300;font-size:17px;max-width:560px;margin:0 auto 30px;}
+
+  @media(max-width:860px){
+    .kh-2col{grid-template-columns:1fr;gap:26px;}
+    .kh-steps .grid,.cov-grid,.why-grid{grid-template-columns:1fr;}
+    .cov-grid{grid-template-columns:1fr 1fr;}
+    .ways-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="index.html#top" class="logo"><img src="assets/logo-final.png" alt="Aypex"></a>
+    <div class="nav-right">
+      <nav class="menu" id="menu">
+        <a href="index.html#servicios" data-en="Services" data-es="Servicios">Services</a>
+        <a href="index.html#producto" data-en="Products" data-es="Productos">Products</a>
+        <a href="khronos-planes.html" data-en="Plans" data-es="Planes">Plans</a>
+        <a href="index.html#equipo" data-en="Team" data-es="Equipo">Team</a>
+        <a class="btn solid" href="index.html#contacto" data-en="Get a quote" data-es="Pedí presupuesto">Get a quote</a>
+      </nav>
+      <button class="lang-btn" id="langToggle" aria-label="Language">
+        <span class="lang-thumb" aria-hidden="true"></span>
+        <span class="lang-opt" data-l="es">ES</span>
+        <span class="lang-opt" data-l="en">EN</span>
+      </button>
+      <button class="burger" id="burger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="kh-hero">
+  <span class="glow"></span>
+  <span class="orb orb-c f1" style="width:520px;height:520px;top:-160px;right:-140px"></span>
+  <div class="wrap">
+    <div class="kh-badge">🤖 <span data-en="AI does the heavy lifting" data-es="La IA hace el trabajo pesado">AI does the heavy lifting</span> · 👤 <b data-en="a real QA engineer guarantees it" data-es="un ingeniero de QA real lo garantiza">a real QA engineer guarantees it</b></div>
+    <div class="kh-eyebrow" data-en="Autonomous QA" data-es="QA autónomo">Autonomous QA</div>
+    <h1 data-en="Catch bugs <span class='grad'>before your customers do</span>." data-es="Encontrá los bugs <span class='grad'>antes que tus clientes</span>.">Catch bugs <span class="grad">before your customers do</span>.</h1>
+    <p class="sub" data-en="Khronos understands your product and tests every release for you — web, mobile and APIs, end to end. Ship fast, without fear of breaking what already works." data-es="Khronos entiende tu producto y prueba cada versión por vos — web, mobile y APIs, de punta a punta. Lanzá rápido y sin miedo a romper lo que ya funciona.">Khronos understands your product and tests every release for you — web, mobile and APIs, end to end. Ship fast, without fear of breaking what already works.</p>
+    <div class="cta">
+      <a class="btn solid" href="khronos-planes.html" data-en="See plans &amp; packages" data-es="Ver planes y paquetes">See plans &amp; packages</a>
+      <a class="btn" href="index.html#contacto" data-en="Talk to us" data-es="Hablemos">Talk to us</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS IT -->
+<section class="kh-what block">
+  <div class="wrap">
+    <div class="kh-2col">
+      <div>
+        <span class="eyebrow" data-en="What it is" data-es="Qué es">What it is</span>
+        <h2 data-en="Show it your product once. <span class='grad'>It learns it.</span>" data-es="Le mostrás tu producto una vez. <span class='grad'>Lo aprende.</span>">Show it your product once. <span class="grad">It learns it.</span></h2>
+        <p data-en="You don't have to dictate every test. You give Khronos your product's context — how it works, how people use it, what should happen at each step — and it understands your product and writes the tests for you." data-es="No hace falta que le dictes cada prueba. Le das a Khronos el contexto de tu producto — cómo funciona, cómo lo usa la gente, qué debería pasar en cada paso — y entiende tu producto y escribe las pruebas por vos.">You don't have to dictate every test. You give Khronos your product's context — how it works, how people use it, what should happen at each step — and it understands your product and writes the tests for you.</p>
+        <p data-en="Then it runs the right tests at the right time, on every release, and tells you in plain language what works and what broke — with a real QA engineer from Aypex watching over it." data-es="Después corre las pruebas justas en el momento justo, en cada versión, y te dice en lenguaje claro qué funciona y qué se rompió — con un ingeniero de QA real de Aypex supervisando.">Then it runs the right tests at the right time, on every release, and tells you in plain language what works and what broke — with a real QA engineer from Aypex watching over it.</p>
+      </div>
+      <div class="kh-visual"><img src="assets/khronos/04_command_center.webp" alt="Khronos command center"></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS (black box, no tech) -->
+<section class="kh-steps block">
+  <div class="wrap">
+    <div class="center"><span class="eyebrow" data-en="How it works" data-es="Cómo funciona">How it works</span>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,3.4vw,34px);font-weight:600;margin-top:10px" data-en="Three steps. No setup on your side." data-es="Tres pasos. Sin instalar nada de tu lado.">Three steps. No setup on your side.</h2></div>
+    <div class="grid">
+      <div class="kh-step"><div class="n">01</div>
+        <h3 data-en="You share your product" data-es="Compartís tu producto">You share your product</h3>
+        <p data-en="Your documentation and a test login — or, for mobile, your app build. That's all we need to get started." data-es="Tu documentación y un usuario de prueba — o, para mobile, el build de tu app. Con eso alcanza para arrancar.">Your documentation and a test login — or, for mobile, your app build. That's all we need to get started.</p></div>
+      <div class="kh-step"><div class="n">02</div>
+        <h3 data-en="Khronos learns &amp; builds" data-es="Khronos aprende y construye">Khronos learns &amp; builds</h3>
+        <p data-en="It maps your real flows and builds the tests — what the user does, what should happen, where it can break — covering the full journey end to end." data-es="Mapea tus flujos reales y construye las pruebas — qué hace el usuario, qué debería pasar, dónde puede fallar — cubriendo el camino completo de punta a punta.">It maps your real flows and builds the tests — what the user does, what should happen, where it can break — covering the full journey end to end.</p></div>
+      <div class="kh-step"><div class="n">03</div>
+        <h3 data-en="It runs &amp; reports" data-es="Corre y reporta">It runs &amp; reports</h3>
+        <p data-en="The right tests run at the right time on every release. You get clear results — what passed, what failed, with evidence — reviewed by a human." data-es="Las pruebas justas corren en el momento justo, en cada versión. Recibís resultados claros — qué pasó, qué falló, con evidencia — revisados por una persona.">The right tests run at the right time on every release. You get clear results — what passed, what failed, with evidence — reviewed by a human.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="kh-cov block">
+  <div class="wrap">
+    <div class="center"><span class="eyebrow" data-en="What it covers" data-es="Qué cubre">What it covers</span>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,3.4vw,34px);font-weight:600;margin-top:10px" data-en="Every layer of your product" data-es="Cada capa de tu producto">Every layer of your product</h2></div>
+    <div class="cov-grid">
+      <div class="cov-card"><div class="ic">🌐</div><h4 data-en="Web" data-es="Web">Web</h4><p data-en="Your app across every major browser." data-es="Tu app en todos los navegadores principales.">Your app across every major browser.</p></div>
+      <div class="cov-card"><div class="ic">📱</div><h4 data-en="Mobile" data-es="Mobile">Mobile</h4><p data-en="Android &amp; iOS, on real virtual devices." data-es="Android e iOS, en dispositivos virtuales reales.">Android &amp; iOS, on real virtual devices.</p></div>
+      <div class="cov-card"><div class="ic">🔌</div><h4 data-en="API" data-es="API">API</h4><p data-en="Your endpoints, contracts and edge cases." data-es="Tus endpoints, contratos y casos borde.">Your endpoints, contracts and edge cases.</p></div>
+      <div class="cov-card"><div class="ic">📈</div><h4 data-en="Performance" data-es="Performance">Performance</h4><p data-en="How it holds up under real load." data-es="Cómo aguanta bajo carga real.">How it holds up under real load.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="kh-why block">
+  <div class="wrap">
+    <div class="center"><span class="eyebrow" data-en="Why teams choose it" data-es="Por qué lo eligen">Why teams choose it</span></div>
+    <div class="why-grid">
+      <div class="why"><h4 data-en="Ship without fear" data-es="Lanzá sin miedo">Ship without fear</h4><p data-en="Every release is checked before it reaches your users. If something breaks, you know first — not your customers." data-es="Cada versión se revisa antes de llegar a tus usuarios. Si algo se rompe, te enterás vos primero — no tus clientes.">Every release is checked before it reaches your users. If something breaks, you know first — not your customers.</p></div>
+      <div class="why"><h4 data-en="AI speed, human trust" data-es="Velocidad de IA, confianza humana">AI speed, human trust</h4><p data-en="The AI does the heavy lifting fast; a real QA engineer reviews and guarantees it. Not a robot left on its own." data-es="La IA hace el trabajo pesado rápido; un ingeniero de QA real revisa y lo garantiza. No un robot dejado solo.">The AI does the heavy lifting fast; a real QA engineer reviews and guarantees it. Not a robot left on its own.</p></div>
+      <div class="why"><h4 data-en="Your data stays private" data-es="Tus datos quedan privados">Your data stays private</h4><p data-en="Everything runs on our own infrastructure. Your documentation and test credentials never leave it, and are encrypted and deleted after each run." data-es="Todo corre en nuestra propia infraestructura. Tu documentación y credenciales de prueba nunca salen de ahí, y se cifran y borran después de cada corrida.">Everything runs on our own infrastructure. Your documentation and test credentials never leave it, and are encrypted and deleted after each run.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TWO WAYS -->
+<section class="kh-ways block">
+  <div class="wrap">
+    <div class="center"><span class="eyebrow" data-en="Two ways to work with us" data-es="Dos formas de trabajar con nosotros">Two ways to work with us</span>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,3.4vw,34px);font-weight:600;margin-top:10px" data-en="A subscription — or we hand you the whole suite" data-es="Una suscripción — o te entregamos la suite completa">A subscription — or we hand you the whole suite</h2></div>
+    <div class="ways-grid">
+      <div class="way sub">
+        <div class="tag" data-en="Subscription" data-es="Suscripción">Subscription</div>
+        <h3 data-en="Continuous QA, hosted by us" data-es="QA continuo, hosteado por nosotros">Continuous QA, hosted by us</h3>
+        <p data-en="We test your product on every release. You just ship — Khronos and our team keep watch." data-es="Probamos tu producto en cada versión. Vos solo lanzás — Khronos y nuestro equipo vigilan.">We test your product on every release. You just ship — Khronos and our team keep watch.</p>
+        <div class="from" data-en="From $600<small> / month</small>" data-es="Desde $600<small> / mes</small>">From $600<small> / month</small></div>
+        <ul>
+          <li data-en="Web · API · Mobile · Performance" data-es="Web · API · Mobile · Performance">Web · API · Mobile · Performance</li>
+          <li data-en="Curated by a real QA engineer" data-es="Curado por un ingeniero de QA real">Curated by a real QA engineer</li>
+          <li data-en="Integrations with your tools (higher tiers)" data-es="Integraciones con tus herramientas (planes altos)">Integrations with your tools (higher tiers)</li>
+        </ul>
+        <a class="btn solid" href="khronos-planes.html" data-en="See subscription plans" data-es="Ver planes de suscripción">See subscription plans</a>
+      </div>
+      <div class="way hand">
+        <div class="tag" data-en="One-time · Handover" data-es="Pago único · Llave en mano">One-time · Handover</div>
+        <h3 data-en="We build it and hand you the repo" data-es="Lo construimos y te damos el repo">We build it and hand you the repo</h3>
+        <p data-en="A QA engineer from Aypex automates your app and delivers the full test suite in your own stack, ready for your team to run." data-es="Un ingeniero de QA de Aypex automatiza tu app y te entrega la suite completa en tu propio stack, lista para que la corra tu equipo.">A QA engineer from Aypex automates your app and delivers the full test suite in your own stack, ready for your team to run.</p>
+        <div class="from" data-en="From $15k<small> one-time</small>" data-es="Desde $15k<small> pago único</small>">From $15k<small> one-time</small></div>
+        <ul>
+          <li data-en="Your stack — Java, Python or C#" data-es="Tu stack — Java, Python o C#">Your stack — Java, Python or C#</li>
+          <li data-en="Scope defined together, up front" data-es="Alcance definido juntos, de arranque">Scope defined together, up front</li>
+          <li data-en="Delivered in weeks, not months" data-es="Entregado en semanas, no meses">Delivered in weeks, not months</li>
+        </ul>
+        <a class="btn solid" href="khronos-planes.html#handover" data-en="See handover packages" data-es="Ver paquetes llave en mano">See handover packages</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="kh-final block">
+  <div class="wrap">
+    <h2 data-en="Ready to stop shipping bugs?" data-es="¿Listo para dejar de lanzar bugs?">Ready to stop shipping bugs?</h2>
+    <p data-en="Tell us about your product and we'll show you exactly how Khronos would test it." data-es="Contanos sobre tu producto y te mostramos exactamente cómo Khronos lo probaría.">Tell us about your product and we'll show you exactly how Khronos would test it.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a class="btn solid" href="index.html#contacto" data-en="Talk to us" data-es="Hablemos">Talk to us</a>
+      <a class="btn" href="khronos-planes.html" data-en="See plans" data-es="Ver planes">See plans</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap" style="text-align:center;padding:30px 0">
+    <a href="index.html#top" class="logo"><img src="assets/logo-final.png" alt="Aypex" style="height:34px"></a>
+    <p style="color:rgba(255,255,255,.55);font-weight:300;font-size:13px;margin-top:14px" data-en="Khronos is a product by Aypex — Software &amp; Solutions." data-es="Khronos es un producto de Aypex — Software y Soluciones.">Khronos is a product by Aypex — Software &amp; Solutions.</p>
+  </div>
+</footer>
+
+<script src="js/main.js?v=20"></script>
+</body>
+</html>

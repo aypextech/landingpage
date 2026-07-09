@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khronos — Modelos de negocio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07080c; --bg2:#0c0e15; --surface:#12141d; --surface2:#191c27;
+  --ink:#eef1f8; --muted:#8b90a2; --line:rgba(255,255,255,.09);
+  --blue:#6c8cff; --blue2:#8fb0ff; --cyb:#3fd8c6; --lime:#7dd88a; --rose:#ff5c7a; --gold:#e0b877; --violet:#b48aff;
+  --sans:'Space Grotesk',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
+  --grad:linear-gradient(120deg,#f6f8fc,#c3c8d6 55%,#8b90a1);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 100% 80% at 50% 0%,rgba(108,140,255,.08),transparent 60%);}
+.orb{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:.45;}
+.orb1{width:480px;height:480px;top:-140px;right:-120px;background:radial-gradient(circle,rgba(108,140,255,.35),transparent 68%);}
+.orb2{width:520px;height:520px;bottom:-200px;left:-160px;background:radial-gradient(circle,rgba(63,216,198,.18),transparent 68%);}
+.ct{position:relative;z-index:2;}
+
+header{padding:76px 0 20px;text-align:center;}
+.eyebrow{font-family:var(--sans);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--cyb);font-weight:600;}
+header h1{font-family:var(--sans);font-size:clamp(30px,5.2vw,52px);font-weight:600;letter-spacing:-1px;margin:16px auto 14px;line-height:1.05;max-width:840px;}
+header h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+header p{color:var(--muted);max-width:600px;margin:0 auto;font-weight:300;font-size:16.5px;}
+.diff{display:inline-flex;align-items:center;gap:12px;margin-top:26px;background:linear-gradient(120deg,rgba(108,140,255,.1),rgba(63,216,198,.06));border:1px solid var(--line);border-radius:40px;padding:11px 22px;font-size:14px;}
+.diff b{color:#fff;font-weight:600;}
+.diff .ai{color:var(--blue2);} .diff .hu{color:var(--cyb);}
+
+.sec{padding:64px 0 10px;}
+.sec-head{text-align:center;max-width:680px;margin:0 auto 40px;}
+.sec-tag{font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:600;}
+.t-blue{color:var(--blue2);} .t-gold{color:var(--gold);}
+.sec-head h2{font-family:var(--sans);font-size:clamp(24px,3.8vw,36px);font-weight:600;margin:10px 0 10px;}
+.sec-head p{color:var(--muted);font-weight:300;font-size:15.5px;}
+
+/* ── SaaS pricing cards ── */
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch;}
+.tier{position:relative;background:linear-gradient(170deg,var(--surface),var(--bg2));border:1px solid var(--line);border-radius:18px;padding:26px 24px;display:flex;flex-direction:column;transition:.35s;}
+.tier:hover{transform:translateY(-5px);box-shadow:0 30px 60px rgba(0,0,0,.5);border-color:rgba(108,140,255,.32);}
+.tier.feat{border-color:rgba(108,140,255,.55);box-shadow:0 0 0 1px rgba(108,140,255,.25),0 30px 70px rgba(108,140,255,.14);}
+.tier.feat::before{content:'Más elegido';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:linear-gradient(120deg,#6c8cff,#8a6cff);color:#fff;font-family:var(--sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:20px;white-space:nowrap;}
+.tier.custom{background:linear-gradient(170deg,rgba(180,138,255,.08),var(--bg2));border-color:rgba(180,138,255,.3);}
+.t-name{font-family:var(--sans);font-size:14px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:var(--muted);}
+.t-price{font-family:var(--sans);font-weight:700;font-size:40px;color:#fff;margin:12px 0 2px;line-height:1;}
+.t-price small{font-size:15px;color:var(--muted);font-weight:400;}
+.t-price .cust{font-size:26px;background:linear-gradient(120deg,#c9adff,#8a6cff);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.t-tag{color:var(--muted);font-size:12.5px;font-weight:300;min-height:34px;margin-bottom:14px;}
+.t-feats{list-style:none;display:flex;flex-direction:column;gap:10px;flex:1;margin-bottom:20px;}
+.t-feats li{font-size:13px;color:#c4cad6;font-weight:300;display:flex;gap:9px;line-height:1.4;}
+.t-feats li .ic{flex:none;width:16px;height:16px;border-radius:50%;display:grid;place-items:center;font-size:10px;margin-top:2px;}
+.t-feats li.yes .ic{background:rgba(125,216,138,.16);color:var(--lime);}
+.t-feats li.no{color:#5f6577;}
+.t-feats li.no .ic{background:rgba(255,255,255,.05);color:#5f6577;}
+.t-feats li b{color:#fff;font-weight:600;}
+.t-cta{font-family:var(--sans);font-size:12.5px;letter-spacing:.5px;font-weight:500;text-align:center;padding:12px;border-radius:10px;border:1px solid var(--line);color:var(--ink);transition:.25s;text-decoration:none;display:block;}
+.tier.feat .t-cta{background:linear-gradient(120deg,#6c8cff,#8a6cff);border:none;color:#fff;}
+.tier.custom .t-cta{border-color:rgba(180,138,255,.4);color:#d3c2ff;}
+.t-cta:hover{border-color:rgba(255,255,255,.3);}
+
+.byhand{text-align:center;margin:24px auto 0;max-width:760px;color:var(--muted);font-size:13.5px;font-weight:300;background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:12px;padding:14px 20px;}
+.byhand b{color:var(--cyb);font-weight:600;}
+
+/* ── comparison table ── */
+.cmp{max-width:1180px;margin:36px auto 0;overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px;}
+th,td{text-align:center;padding:13px 14px;border-bottom:1px solid var(--line);}
+th{font-family:var(--sans);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:#cfd4e2;font-weight:400;}
+tbody tr:hover{background:rgba(255,255,255,.02);}
+.yes{color:var(--lime);} .no{color:#4f5568;} .mono{font-family:var(--mono);font-size:12.5px;color:var(--blue2);}
+th.feat{color:var(--blue2);}
+
+/* ── Handover ── */
+.hpk{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
+.hcard{background:linear-gradient(170deg,var(--surface),var(--bg2));border:1px solid var(--line);border-radius:18px;padding:26px 24px;transition:.35s;position:relative;overflow:hidden;}
+.hcard:hover{transform:translateY(-5px);border-color:rgba(224,184,119,.4);box-shadow:0 30px 60px rgba(0,0,0,.5);}
+.hcard.mid{border-color:rgba(224,184,119,.45);box-shadow:0 0 0 1px rgba(224,184,119,.2);}
+.h-name{font-family:var(--sans);font-size:14px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:var(--gold);}
+.h-price{font-family:var(--sans);font-weight:700;font-size:38px;color:#fff;margin:10px 0 2px;line-height:1;}
+.h-price small{font-size:14px;color:var(--muted);font-weight:400;}
+.h-tag{color:var(--muted);font-size:12.5px;font-weight:300;margin-bottom:16px;min-height:38px;}
+.h-feats{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.h-feats li{font-size:13px;color:#c4cad6;font-weight:300;display:flex;gap:9px;line-height:1.45;}
+.h-feats li::before{content:'◆';color:var(--gold);font-size:9px;margin-top:4px;flex:none;}
+.h-feats li b{color:#fff;font-weight:600;}
+
+.stack{max-width:900px;margin:30px auto 0;background:linear-gradient(160deg,rgba(224,184,119,.05),var(--bg2));border:1px solid var(--line);border-radius:18px;padding:26px 28px;}
+.stack h4{font-family:var(--sans);font-size:15px;font-weight:600;margin-bottom:4px;}
+.stack .sh{color:var(--muted);font-size:13px;font-weight:300;margin-bottom:18px;}
+.stack-row{display:flex;flex-wrap:wrap;gap:22px;}
+.stack-col{flex:1;min-width:200px;}
+.stack-col .lbl{font-family:var(--sans);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{font-family:var(--sans);font-size:12.5px;font-weight:500;padding:8px 14px;border-radius:22px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:#dfe4ee;}
+.chip.on{background:rgba(224,184,119,.12);border-color:rgba(224,184,119,.4);color:var(--gold);}
+.chip.plus{border-style:dashed;color:var(--muted);}
+
+.moat{max-width:900px;margin:26px auto 0;display:flex;gap:16px;align-items:flex-start;background:linear-gradient(120deg,rgba(108,140,255,.08),rgba(63,216,198,.04));border:1px solid var(--line);border-radius:16px;padding:20px 24px;}
+.moat .mi{font-size:24px;flex:none;}
+.moat b{color:#fff;font-weight:600;}
+.moat p{color:#c4cad6;font-size:14px;font-weight:300;}
+
+/* ── infra trust strip ── */
+.infra{max-width:1180px;margin:60px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.icard{background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:14px;padding:22px;}
+.icard .ii{font-size:20px;}
+.icard h5{font-family:var(--sans);font-size:15px;font-weight:600;margin:8px 0 5px;}
+.icard p{color:var(--muted);font-size:13px;font-weight:300;}
+
+.note{max-width:1180px;margin:40px auto 0;color:#5f6577;font-size:12px;font-weight:300;text-align:center;font-style:italic;}
+footer{max-width:1180px;margin:40px auto 0;padding:34px 26px 64px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:13px;font-weight:300;}
+footer .brand{font-family:var(--sans);font-weight:600;letter-spacing:3px;color:#fff;font-size:18px;}
+footer .brand .k{color:var(--blue);}
+
+@media(max-width:940px){.tiers{grid-template-columns:repeat(2,1fr);}.hpk{grid-template-columns:1fr;}.infra{grid-template-columns:1fr;}}
+@media(max-width:560px){.tiers{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<span class="orb orb1"></span><span class="orb orb2"></span>
+<div class="ct">
+
+<nav style="position:sticky;top:0;z-index:20;background:rgba(7,8,12,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:14px 26px">
+    <a href="khronos.html" style="text-decoration:none;color:var(--muted);font-family:var(--sans);font-size:13px;letter-spacing:.5px">← Khronos</a>
+    <a href="index.html#contacto" style="text-decoration:none;font-family:var(--sans);font-size:12.5px;letter-spacing:.5px;font-weight:500;color:#fff;background:linear-gradient(120deg,#6c8cff,#8a6cff);padding:9px 18px;border-radius:9px">Hablemos</a>
+  </div>
+</nav>
+
+<header class="wrap">
+  <div class="eyebrow">Aypex · Khronos</div>
+  <h1>Dos formas de trabajar con <span class="g">Khronos</span></h1>
+  <p>Una suscripción que testea cada release por vos — o te entregamos la suite completa, en tu stack, lista para instalar.</p>
+  <div class="diff">🤖 <span><b class="ai">La IA hace el 70%</b></span> · 👤 <span><b class="hu">un SDET humano garantiza el 30%</b></span></div>
+</header>
+
+<!-- ══════════ SaaS ══════════ -->
+<section class="sec" id="saas">
+  <div class="sec-head">
+    <div class="sec-tag t-blue">Modelo 1 · Suscripción mensual</div>
+    <h2>QA continuo, hosteado por nosotros</h2>
+    <p>Khronos corre en nuestra infraestructura y testea tu producto en cada versión. Curado <b style="color:#fff">a mano</b> por Aypex — no es un robot suelto. Escalás de plan a medida que crece tu cobertura.</p>
+  </div>
+
+  <div class="tiers wrap">
+    <!-- Starter -->
+    <div class="tier">
+      <div class="t-name">Starter</div>
+      <div class="t-price">$600<small>/mes</small></div>
+      <div class="t-tag">Para empezar a cubrir lo crítico sin miedo a romper lo que ya funciona.</div>
+      <ul class="t-feats">
+        <li class="yes"><span class="ic">✓</span><span>Capas <b>Web + API</b></span></li>
+        <li class="yes"><span class="ic">✓</span><span>Suites <b>Smoke + Regresión base</b></span></li>
+        <li class="yes"><span class="ic">✓</span><span>Hasta <b>~50 tests</b> mantenidos</span></li>
+        <li class="yes"><span class="ic">✓</span><span>Auto-healing de selectores</span></li>
+        <li class="yes"><span class="ic">✓</span><span>Reportes en el portal</span></li>
+        <li class="no"><span class="ic">–</span><span>Integraciones (Jira / Slack)</span></li>
+        <li class="no"><span class="ic">–</span><span>Mobile · Performance</span></li>
+      </ul>
+      <a class="t-cta" href="index.html#contacto">Empezar</a>
+    </div>
+
+    <!-- Growth -->
+    <div class="tier">
+      <div class="t-name">Growth</div>
+      <div class="t-price">$900<small>/mes</small></div>
+      <div class="t-tag">Más cobertura y el primer paso a mobile, con avisos donde ya trabajás.</div>
+      <ul class="t-feats">
+        <li class="yes"><span class="ic">✓</span><span>Todo lo de <b>Starter</b></span></li>
+        <li class="yes"><span class="ic">✓</span><span>+ Capa <b>Mobile (Android)</b></span></li>
+        <li class="yes"><span class="ic">✓</span><span>+ Suites <b>E2E</b></span></li>
+        <li class="yes"><span class="ic">✓</span><span>Hasta <b>~150 tests</b></span></li>
+        <li class="yes"><span class="ic">✓</span><span>Notificaciones <b>Slack</b></span></li>
+        <li class="yes"><span class="ic">✓</span><span>Más ejecuciones / mes</span></li>
+        <li class="no"><span class="ic">–</span><span>Jira · CI/CD · Performance</span></li>
+      </ul>
+      <a class="t-cta" href="index.html#contacto">Elegir Growth</a>
+    </div>
+
+    <!-- Scale (featured) -->
+    <div class="tier feat">
+      <div class="t-name">Scale</div>
+      <div class="t-price">$1.200<small>/mes</small></div>
+      <div class="t-tag">Todas las capas, integraciones completas y el techo más alto del plan estándar.</div>
+      <ul class="t-feats">
+        <li class="yes"><span class="ic">✓</span><span>Todo lo de <b>Growth</b></span></li>
+        <li class="yes"><span class="ic">✓</span><span><b>Todas las capas</b>: Web · API · Mobile (iOS+Android) · Performance</span></li>
+        <li class="yes"><span class="ic">✓</span><span>Hasta <b>~400 tests</b> <span style="color:var(--muted)">(el techo)</span></span></li>
+        <li class="yes"><span class="ic">✓</span><span>Integraciones <b>Jira + Slack + CI/CD</b></span></li>
+        <li class="yes"><span class="ic">✓</span><span>Reportes ejecutivos</span></li>
+        <li class="yes"><span class="ic">✓</span><span>Soporte prioritario</span></li>
+      </ul>
+      <a class="t-cta" href="index.html#contacto">Elegir Scale</a>
+    </div>
+
+    <!-- Custom -->
+    <div class="tier custom">
+      <div class="t-name">Custom</div>
+      <div class="t-price"><span class="cust">Hablemos</span></div>
+      <div class="t-tag">¿Superás el techo de Scale? Pasás a un plan a medida con trato directo.</div>
+      <ul class="t-feats">
+        <li class="yes"><span class="ic">✓</span><span>Volumen de tests <b>negociado</b></span></li>
+        <li class="yes"><span class="ic">✓</span><span><b>Atención personalizada</b> de Aypex (SDET dedicado)</span></li>
+        <li class="yes"><span class="ic">✓</span><span>Device farm iOS dedicada</span></li>
+        <li class="yes"><span class="ic">✓</span><span>SLA y ventanas a medida</span></li>
+        <li class="yes"><span class="ic">✓</span><span>Integraciones y flujos propios</span></li>
+      </ul>
+      <a class="t-cta" href="index.html#contacto">Coordinar una charla</a>
+    </div>
+  </div>
+
+  <div class="byhand wrap"><b>Todo el SaaS es curado a mano.</b> La IA acelera; una persona de Aypex revisa, ajusta y garantiza que cada suite realmente pruebe lo que importa. Subís de plan de a poco, a medida que tu cobertura crece.</div>
+
+  <!-- comparison -->
+  <div class="cmp wrap">
+    <table>
+      <thead><tr><th>Incluye</th><th>Starter<br>$600</th><th>Growth<br>$900</th><th class="feat">Scale<br>$1.200</th><th>Custom</th></tr></thead>
+      <tbody>
+        <tr><td>Web + API</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Mobile (Android)</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Mobile iOS · Performance</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Tope de tests mantenidos</td><td class="mono">~50</td><td class="mono">~150</td><td class="mono">~400</td><td class="mono">a medida</td></tr>
+        <tr><td>Notificaciones Slack</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Jira + CI/CD</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>SDET dedicado</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ Handover ══════════ -->
+<section class="sec" id="handover">
+  <div class="sec-head">
+    <div class="sec-tag t-gold">Modelo 2 · Entrega llave en mano</div>
+    <h2>Te dejamos la suite completa, en tu stack</h2>
+    <p>Pago único. Un SDET real de Aypex + la velocidad de Khronos automatizan tu app y te entregan <b style="color:#fff">el repo</b>, listo para instalar y que lo sigas vos. Como contratar un dev por un año — pero la base queda lista en <b style="color:#fff">semanas</b>.</p>
+  </div>
+
+  <div class="hpk wrap">
+    <div class="hcard">
+      <div class="h-name">Esencial</div>
+      <div class="h-price">$15k<small> único</small></div>
+      <div class="h-tag">Los flujos críticos de tu app, automatizados y entregados.</div>
+      <ul class="h-feats">
+        <li><b>1 stack</b> a elección (lenguaje + framework)</li>
+        <li>Alcance acotado: <b>flujos core</b> (login, camino feliz, casos clave)</li>
+        <li>Web <b>o</b> API</li>
+        <li>Repo documentado + guía de ejecución</li>
+        <li>Handoff con un SDET</li>
+      </ul>
+    </div>
+    <div class="hcard mid">
+      <div class="h-name">Pro</div>
+      <div class="h-price">$30k<small> único</small></div>
+      <div class="h-tag">Cobertura amplia, multi-capa y listo para tu CI.</div>
+      <ul class="h-feats">
+        <li>Todo lo de <b>Esencial</b></li>
+        <li><b>Web + API</b> (+ Mobile opcional)</li>
+        <li>Smoke · Regresión · <b>E2E</b></li>
+        <li>Pipeline <b>CI/CD</b> configurado</li>
+        <li>Algunos <b>extras</b> a medida (reporting, data factory)</li>
+        <li>Training al equipo</li>
+      </ul>
+    </div>
+    <div class="hcard">
+      <div class="h-name">Full</div>
+      <div class="h-price">$60k<small> único</small></div>
+      <div class="h-tag">Tu aplicación completa, en el stack que elijas, con todos los chiches.</div>
+      <ul class="h-feats">
+        <li>Todo lo de <b>Pro</b></li>
+        <li><b>App completa</b> multi-capa (Web · API · Mobile · Performance)</li>
+        <li>Stack 100% <b>a medida</b></li>
+        <li>Todos los extras que se puedan sumar</li>
+        <li>Seguimiento humano extendido</li>
+        <li>Handoff + soporte de arranque</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stack wrap">
+    <h4>Vos elegís la tecnología — nosotros la construimos</h4>
+    <div class="sh">La entrega sale en el stack que uses en tu casa. (Tu stack propio suma un poco sobre el nuestro nativo — lo definimos al fijar el alcance.)</div>
+    <div class="stack-row">
+      <div class="stack-col"><div class="lbl">Lenguaje</div><div class="chips">
+        <span class="chip on">Java</span><span class="chip on">Python</span><span class="chip on">C#</span></div></div>
+      <div class="stack-col"><div class="lbl">Framework</div><div class="chips">
+        <span class="chip on">Selenium</span><span class="chip on">Playwright</span><span class="chip on">Appium</span></div></div>
+      <div class="stack-col"><div class="lbl">Extras (a medida)</div><div class="chips">
+        <span class="chip">TestNG</span><span class="chip">Allure</span><span class="chip">CI/CD</span><span class="chip">Reporting</span><span class="chip plus">+ lo que se pueda</span></div></div>
+    </div>
+  </div>
+
+  <div class="moat wrap">
+    <div class="mi">🛡️</div>
+    <div><b>Te quedás con TU suite, no con Khronos.</b>
+      <p>El entregable son tus tests en tu stack (Java/C#/Python), listos para que los mantenga tu equipo. Khronos — la fábrica que los produjo 5× más rápido — queda con Aypex. Vos ganás velocidad; nosotros protegemos el motor.</p></div>
+  </div>
+
+  <div class="note">Rango de precio $15k – $60k según el alcance de pruebas, que definimos juntos antes de empezar. El alcance se pacta por cantidad de flujos y capas — no por "toda la app" a ciegas.</div>
+</section>
+
+<!-- ══════════ Infra trust ══════════ -->
+<section class="sec" id="infra">
+  <div class="sec-head">
+    <div class="sec-tag" style="color:var(--cyb)">Cómo lo corremos</div>
+    <h2>Todo local. Tus datos no salen de nuestro server.</h2>
+  </div>
+  <div class="infra wrap">
+    <div class="icard"><div class="ii">🧠</div><h5>Cerebro local (DGX)</h5><p>La IA que aprende tu producto corre en nuestro hardware — tu documentación y credenciales nunca se mandan a una API externa.</p></div>
+    <div class="icard"><div class="ii">📱</div><h5>Device farm propia</h5><p>Emuladores Android y simuladores iOS en Macs nuestros. El cerebro asigna el device libre y ejecuta los flows Maestro.</p></div>
+    <div class="icard"><div class="ii">🔒</div><h5>Credenciales cifradas</h5><p>Write-only y borradas después de cada corrida. Staging, nunca producción. Sin secretos en logs.</p></div>
+  </div>
+  <div class="note">Números de tests, ejecuciones y capas por plan son sugeridos y ajustables — se calibran con la operación real. Precios en USD.</div>
+</section>
+
+<footer>
+  <div class="brand"><span class="k">K</span>HRONOS</div>
+  <p style="margin-top:10px">Aypex · QA autónomo con seguimiento humano de verdad — no solo IA.</p>
+</footer>
+</div>
+</body>
+</html>
