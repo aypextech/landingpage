@@ -547,3 +547,7 @@ section.block.light#equipo .orb{opacity:.4;z-index:0;}
   .kcar-slide{transition:opacity .4s ease;}
   .kcar-slide.is-active .kcar-glare{animation:none;opacity:0;}
 }
+
+/* Khronos nav item — highlighted */
+.menu a.nav-khronos{color:#6c8cff;font-weight:600;}
+.menu a.nav-khronos::after{background:#6c8cff !important;}

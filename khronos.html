@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="assets/logo-final.png">
-<link rel="stylesheet" href="css/styles.css?v=21">
+<link rel="stylesheet" href="css/styles.css?v=24">
 <style>
   /* Khronos landing — page-specific, layered on the site's styles */
   .kh-hero{position:relative;min-height:74vh;display:flex;align-items:center;text-align:center;overflow:hidden;padding:120px 0 70px;}
@@ -29,7 +29,7 @@
   .kh-2col h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,3.6vw,38px);font-weight:600;line-height:1.1;margin-bottom:18px;letter-spacing:-.5px;}
   .kh-2col p{color:rgba(255,255,255,.72);font-weight:300;font-size:16px;margin-bottom:14px;}
   .kh-2col .grad{background:linear-gradient(120deg,#fff,#a9b4e6 60%,#4bd4c0);-webkit-background-clip:text;background-clip:text;color:transparent;}
-  .kh-visual{aspect-ratio:4/3;border-radius:18px;border:1px solid rgba(255,255,255,.1);overflow:hidden;position:relative;background:#0a0b12;box-shadow:0 30px 70px rgba(0,0,0,.5);}
+  .kh-visual{aspect-ratio:16/10;border-radius:18px;border:1px solid rgba(255,255,255,.1);overflow:hidden;position:relative;background:#0a0b12;box-shadow:0 30px 70px rgba(0,0,0,.5);}
   .kh-visual img{width:100%;height:100%;object-fit:cover;opacity:.92;}
 
   .kh-steps{padding:20px 0 70px;}
@@ -78,6 +78,80 @@
     .cov-grid{grid-template-columns:1fr 1fr;}
     .ways-grid{grid-template-columns:1fr;}
   }
+
+  /* ── Plans embedded (namespaced .khp-*, no collisions) ── */
+  .kh-plans{padding:30px 0 80px;}
+  .khp-sub-h{margin-top:56px;}
+  .khp-tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px;align-items:stretch;}
+  .khp-tier{position:relative;background:linear-gradient(170deg,rgba(18,20,29,.92),rgba(9,10,15,.96));border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px 22px;display:flex;flex-direction:column;transition:.35s;}
+  .khp-tier:hover{transform:translateY(-5px);border-color:rgba(108,140,255,.35);box-shadow:0 26px 54px rgba(0,0,0,.5);}
+  .khp-tier.feat{border-color:rgba(108,140,255,.55);box-shadow:0 0 0 1px rgba(108,140,255,.22),0 26px 60px rgba(108,140,255,.13);}
+  .khp-tier.feat::before{content:attr(data-badge);position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:linear-gradient(120deg,#6c8cff,#8a6cff);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:20px;white-space:nowrap;}
+  .khp-tier.cust{background:linear-gradient(170deg,rgba(180,138,255,.09),rgba(9,10,15,.96));border-color:rgba(180,138,255,.3);}
+  .khp-name{font-family:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.6);}
+  .khp-price{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:35px;color:#fff;margin:10px 0 2px;line-height:1;}
+  .khp-price small{font-size:13px;color:rgba(255,255,255,.5);font-weight:400;}
+  .khp-price .c{font-size:23px;background:linear-gradient(120deg,#c9adff,#8a6cff);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .khp-tag{color:rgba(255,255,255,.6);font-size:12.5px;font-weight:300;min-height:54px;margin-bottom:14px;line-height:1.4;}
+  .khp-feats{list-style:none;display:flex;flex-direction:column;gap:9px;flex:1;margin-bottom:18px;}
+  .khp-feats li{font-size:12.5px;color:rgba(255,255,255,.78);font-weight:300;display:flex;gap:8px;line-height:1.35;}
+  .khp-feats li::before{content:"✓";color:#7dd88a;font-size:11px;flex:none;margin-top:1px;}
+  .khp-feats li.no{color:rgba(255,255,255,.34);}
+  .khp-feats li.no::before{content:"–";color:rgba(255,255,255,.3);}
+  .khp-feats li b{color:#fff;font-weight:600;}
+  .khp-cta{font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:.5px;font-weight:500;text-align:center;padding:11px;border-radius:9px;border:1px solid rgba(255,255,255,.14);color:#fff;text-decoration:none;transition:.25s;}
+  .khp-tier.feat .khp-cta{background:linear-gradient(120deg,#6c8cff,#8a6cff);border:none;}
+  .khp-tier.cust .khp-cta{border-color:rgba(180,138,255,.4);color:#d3c2ff;}
+  .khp-cta:hover{border-color:rgba(255,255,255,.32);}
+  .khp-note{text-align:center;color:rgba(255,255,255,.42);font-size:12.5px;font-weight:300;margin-top:20px;max-width:760px;margin-left:auto;margin-right:auto;}
+  .khp-note b{color:#4bd4c0;font-weight:600;}
+  .khp-hand{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px;}
+  .khp-h{background:linear-gradient(170deg,rgba(18,20,29,.92),rgba(9,10,15,.96));border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px 22px;transition:.35s;}
+  .khp-h:hover{transform:translateY(-5px);border-color:rgba(224,184,119,.4);box-shadow:0 26px 54px rgba(0,0,0,.5);}
+  .khp-h.mid{border-color:rgba(224,184,119,.4);box-shadow:0 0 0 1px rgba(224,184,119,.16);}
+  .khp-hname{font-family:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:#e0b877;}
+  .khp-hprice{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:33px;color:#fff;margin:10px 0 2px;line-height:1;}
+  .khp-hprice small{font-size:13px;color:rgba(255,255,255,.5);font-weight:400;}
+  .khp-hfeats{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .khp-hfeats li{font-size:12.5px;color:rgba(255,255,255,.78);font-weight:300;display:flex;gap:8px;line-height:1.4;}
+  .khp-hfeats li::before{content:"◆";color:#e0b877;font-size:8px;margin-top:4px;flex:none;}
+  .khp-hfeats li b{color:#fff;font-weight:600;}
+  .khp-stack{margin-top:22px;background:linear-gradient(160deg,rgba(224,184,119,.05),rgba(9,10,15,.9));border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px 26px;}
+  .khp-stack h4{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;margin-bottom:4px;}
+  .khp-stack .sh{color:rgba(255,255,255,.55);font-size:12.5px;font-weight:300;margin-bottom:16px;}
+  .khp-srow{display:flex;flex-wrap:wrap;gap:22px;}
+  .khp-scol{flex:1;min-width:180px;}
+  .khp-scol .l{font-family:'Space Grotesk',sans-serif;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:9px;}
+  .khp-chips{display:flex;flex-wrap:wrap;gap:7px;}
+  .khp-chip{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:500;padding:7px 13px;border-radius:22px;background:rgba(224,184,119,.1);border:1px solid rgba(224,184,119,.35);color:#e0b877;}
+  .khp-chip.plus{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.5);border-style:dashed;}
+  .khp-moat{margin-top:22px;display:flex;gap:16px;align-items:flex-start;background:linear-gradient(120deg,rgba(108,140,255,.08),rgba(75,212,192,.04));border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px 24px;}
+  .khp-moat .mi{font-size:22px;flex:none;}
+  .khp-moat b{color:#fff;font-weight:600;}
+  .khp-moat p{color:rgba(255,255,255,.72);font-size:13.5px;font-weight:300;}
+  @media(max-width:860px){.khp-tiers{grid-template-columns:1fr 1fr;}.khp-hand{grid-template-columns:1fr;}}
+  @media(max-width:560px){.khp-tiers{grid-template-columns:1fr;}}
+
+  /* ── standard monochrome line icons (no colorful emoji) ── */
+  .kh-i{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:-2px;flex:none;}
+  .kh-badge{color:rgba(255,255,255,.8);}
+  .cov-card .ic{color:#7f8598;line-height:0;}
+  .cov-card .ic svg{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;}
+  .khp-moat .mi{line-height:0;}
+  .khp-moat .mi svg{width:24px;height:24px;stroke:#7f8598;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+
+  /* ── light-section overrides for the custom Khronos blocks (dark→white) ── */
+  .block.light .kh-2col h2{color:#0a0b10;}
+  .block.light .kh-2col p{color:#565b6b;}
+  .block.light .kh-2col .grad{background:linear-gradient(120deg,#2f4a9e,#6c8cff 58%,#b78a3c);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .block.light .kh-visual{border-color:rgba(12,22,45,.12);box-shadow:0 18px 44px rgba(20,30,60,.12);background:#fff;}
+  .block.light .why{border-left-color:#b78a3c;}
+  .block.light .why h4{color:#0a0b10;}
+  .block.light .why p{color:#565b6b;}
+  .block.light .kh-step{background:#fff;border-color:rgba(12,22,45,.1);box-shadow:0 12px 34px rgba(20,30,60,.07);}
+  .block.light .kh-step h3{color:#0a0b10;}
+  .block.light .kh-step p{color:#565b6b;}
+  .block.light .kh-step .n{color:#2f4a9e;}
 </style>
 </head>
 <body>
@@ -90,7 +164,7 @@
       <nav class="menu" id="menu">
         <a href="index.html#servicios" data-en="Services" data-es="Servicios">Services</a>
         <a href="index.html#producto" data-en="Products" data-es="Productos">Products</a>
-        <a href="khronos-planes.html" data-en="Plans" data-es="Planes">Plans</a>
+        <a href="#planes" data-en="Plans" data-es="Planes">Plans</a>
         <a href="index.html#equipo" data-en="Team" data-es="Equipo">Team</a>
         <a class="btn solid" href="index.html#contacto" data-en="Get a quote" data-es="Pedí presupuesto">Get a quote</a>
       </nav>
@@ -109,12 +183,12 @@
   <span class="glow"></span>
   <span class="orb orb-c f1" style="width:520px;height:520px;top:-160px;right:-140px"></span>
   <div class="wrap">
-    <div class="kh-badge">🤖 <span data-en="AI does the heavy lifting" data-es="La IA hace el trabajo pesado">AI does the heavy lifting</span> · 👤 <b data-en="a real QA engineer guarantees it" data-es="un ingeniero de QA real lo garantiza">a real QA engineer guarantees it</b></div>
+    <div class="kh-badge"><svg viewBox="0 0 24 24" class="kh-i"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 4v2.5M14 4v2.5M10 17.5V20M14 17.5V20M4 10h2.5M4 14h2.5M17.5 10H20M17.5 14H20"/></svg> <span data-en="Our tool does the heavy lifting" data-es="Nuestra herramienta hace el trabajo pesado">Our tool does the heavy lifting</span> · <svg viewBox="0 0 24 24" class="kh-i"><circle cx="12" cy="8" r="3.2"/><path d="M5.8 19.2a6.2 6.2 0 0 1 12.4 0"/></svg> <b data-en="a QA engineer validates it" data-es="un SDET de nuestro equipo lo valida">a QA engineer validates it</b></div>
     <div class="kh-eyebrow" data-en="Autonomous QA" data-es="QA autónomo">Autonomous QA</div>
     <h1 data-en="Catch bugs <span class='grad'>before your customers do</span>." data-es="Encontrá los bugs <span class='grad'>antes que tus clientes</span>.">Catch bugs <span class="grad">before your customers do</span>.</h1>
     <p class="sub" data-en="Khronos understands your product and tests every release for you — web, mobile and APIs, end to end. Ship fast, without fear of breaking what already works." data-es="Khronos entiende tu producto y prueba cada versión por vos — web, mobile y APIs, de punta a punta. Lanzá rápido y sin miedo a romper lo que ya funciona.">Khronos understands your product and tests every release for you — web, mobile and APIs, end to end. Ship fast, without fear of breaking what already works.</p>
     <div class="cta">
-      <a class="btn solid" href="khronos-planes.html" data-en="See plans &amp; packages" data-es="Ver planes y paquetes">See plans &amp; packages</a>
+      <a class="btn solid" href="#planes" data-en="See plans &amp; packages" data-es="Ver planes y paquetes">See plans &amp; packages</a>
       <a class="btn" href="index.html#contacto" data-en="Talk to us" data-es="Hablemos">Talk to us</a>
     </div>
   </div>
@@ -126,17 +200,16 @@
     <div class="kh-2col">
       <div>
         <span class="eyebrow" data-en="What it is" data-es="Qué es">What it is</span>
-        <h2 data-en="Show it your product once. <span class='grad'>It learns it.</span>" data-es="Le mostrás tu producto una vez. <span class='grad'>Lo aprende.</span>">Show it your product once. <span class="grad">It learns it.</span></h2>
-        <p data-en="You don't have to dictate every test. You give Khronos your product's context — how it works, how people use it, what should happen at each step — and it understands your product and writes the tests for you." data-es="No hace falta que le dictes cada prueba. Le das a Khronos el contexto de tu producto — cómo funciona, cómo lo usa la gente, qué debería pasar en cada paso — y entiende tu producto y escribe las pruebas por vos.">You don't have to dictate every test. You give Khronos your product's context — how it works, how people use it, what should happen at each step — and it understands your product and writes the tests for you.</p>
-        <p data-en="Then it runs the right tests at the right time, on every release, and tells you in plain language what works and what broke — with a real QA engineer from Aypex watching over it." data-es="Después corre las pruebas justas en el momento justo, en cada versión, y te dice en lenguaje claro qué funciona y qué se rompió — con un ingeniero de QA real de Aypex supervisando.">Then it runs the right tests at the right time, on every release, and tells you in plain language what works and what broke — with a real QA engineer from Aypex watching over it.</p>
+        <h2 data-en="Coverage <span class='grad'>without writing the tests</span>." data-es="Cobertura <span class='grad'>sin escribir las pruebas</span>.">Coverage <span class="grad">without writing the tests</span>.</h2>
+        <p data-en="You give Khronos your product's context; it writes and runs the tests across web, mobile and API — and a QA engineer from our team validates the results." data-es="Le das a Khronos el contexto de tu producto; escribe y corre las pruebas en web, mobile y API — y un SDET de nuestro equipo valida los resultados.">You give Khronos your product's context; it writes and runs the tests across web, mobile and API — and a QA engineer from our team validates the results.</p>
       </div>
-      <div class="kh-visual"><img src="assets/khronos/04_command_center.webp" alt="Khronos command center"></div>
+      <div class="kh-visual"><img src="assets/khronos/16_device_running.webp" alt="Khronos running mobile tests on a virtual device"></div>
     </div>
   </div>
 </section>
 
 <!-- HOW IT WORKS (black box, no tech) -->
-<section class="kh-steps block">
+<section class="kh-steps block light">
   <div class="wrap">
     <div class="center"><span class="eyebrow" data-en="How it works" data-es="Cómo funciona">How it works</span>
       <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,3.4vw,34px);font-weight:600;margin-top:10px" data-en="Three steps. No setup on your side." data-es="Tres pasos. Sin instalar nada de tu lado.">Three steps. No setup on your side.</h2></div>
@@ -155,26 +228,106 @@
 </section>
 
 <!-- COVERAGE -->
-<section class="kh-cov block">
+<section class="kh-cov block alt">
   <div class="wrap">
     <div class="center"><span class="eyebrow" data-en="What it covers" data-es="Qué cubre">What it covers</span>
       <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,3.4vw,34px);font-weight:600;margin-top:10px" data-en="Every layer of your product" data-es="Cada capa de tu producto">Every layer of your product</h2></div>
     <div class="cov-grid">
-      <div class="cov-card"><div class="ic">🌐</div><h4 data-en="Web" data-es="Web">Web</h4><p data-en="Your app across every major browser." data-es="Tu app en todos los navegadores principales.">Your app across every major browser.</p></div>
-      <div class="cov-card"><div class="ic">📱</div><h4 data-en="Mobile" data-es="Mobile">Mobile</h4><p data-en="Android &amp; iOS, on real virtual devices." data-es="Android e iOS, en dispositivos virtuales reales.">Android &amp; iOS, on real virtual devices.</p></div>
-      <div class="cov-card"><div class="ic">🔌</div><h4 data-en="API" data-es="API">API</h4><p data-en="Your endpoints, contracts and edge cases." data-es="Tus endpoints, contratos y casos borde.">Your endpoints, contracts and edge cases.</p></div>
-      <div class="cov-card"><div class="ic">📈</div><h4 data-en="Performance" data-es="Performance">Performance</h4><p data-en="How it holds up under real load." data-es="Cómo aguanta bajo carga real.">How it holds up under real load.</p></div>
+      <div class="cov-card"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.5 2.6 14.5 0 17M12 3.5c-2.6 2.5-2.6 14.5 0 17"/></svg></div><h4 data-en="Web" data-es="Web">Web</h4><p data-en="Your app across every major browser." data-es="Tu app en todos los navegadores principales.">Your app across every major browser.</p></div>
+      <div class="cov-card"><div class="ic"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M10.5 18.5h3"/></svg></div><h4 data-en="Mobile" data-es="Mobile">Mobile</h4><p data-en="Android &amp; iOS, on real virtual devices." data-es="Android e iOS, en dispositivos virtuales reales.">Android &amp; iOS, on real virtual devices.</p></div>
+      <div class="cov-card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M8.5 8L4.5 12l4 4M15.5 8l4 4-4 4"/></svg></div><h4 data-en="API" data-es="API">API</h4><p data-en="Your endpoints, contracts and edge cases." data-es="Tus endpoints, contratos y casos borde.">Your endpoints, contracts and edge cases.</p></div>
+      <div class="cov-card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20.5V13M10 20.5V6M16 20.5v-9.5M2.5 20.5h19"/></svg></div><h4 data-en="Performance" data-es="Performance">Performance</h4><p data-en="How it holds up under real load." data-es="Cómo aguanta bajo carga real.">How it holds up under real load.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TEST TYPES + COVERAGE (moved from home) -->
+<section class="block">
+  <div class="wrap">
+    
+  </div>
+</section>
+
+<!-- SEE IT IN ACTION (moved from home) -->
+<section class="block alt">
+  <div class="wrap">
+    <!-- Khronos in action — futuristic carousel -->
+    <div class="center cov-head"><span class="eyebrow" data-en="See it in action" data-es="Miralo en acción">See it in action</span></div>
+    <div class="kcar" id="kcar" aria-roledescription="carousel" aria-label="Khronos screenshots">
+      <div class="kcar-stage" id="kcarStage">
+        <button class="kcar-nav kcar-prev" id="kcarPrev" type="button" aria-label="Previous">&#8249;</button>
+        <div class="kcar-track" id="kcarTrack">
+          <figure class="kcar-slide" data-cap-en="Command center — every layer of your product, one dashboard" data-cap-es="Centro de comando — cada capa de tu producto, un solo panel">
+            <div class="kcar-frame"><img src="assets/khronos/04_command_center.webp" alt="Khronos command center" loading="lazy"><span class="kcar-glare"></span></div>
+            <div class="kcar-mirror"><img src="assets/khronos/04_command_center.webp" alt="" aria-hidden="true" loading="lazy"></div>
+          </figure>
+          <figure class="kcar-slide" data-cap-en="Live execution — real-time telemetry with self-healing selectors" data-cap-es="Ejecución en vivo — telemetría en tiempo real con selectores auto-reparables">
+            <div class="kcar-frame"><img src="assets/khronos/08_execution_live.webp" alt="Khronos live test execution" loading="lazy"><span class="kcar-glare"></span></div>
+            <div class="kcar-mirror"><img src="assets/khronos/08_execution_live.webp" alt="" aria-hidden="true" loading="lazy"></div>
+          </figure>
+          <figure class="kcar-slide" data-cap-en="90 tests, 3 browsers, zero failures — release with confidence" data-cap-es="90 pruebas, 3 navegadores, cero fallas — lanzá con confianza">
+            <div class="kcar-frame"><img src="assets/khronos/09_execution_passed.webp" alt="Khronos test run passed" loading="lazy"><span class="kcar-glare"></span></div>
+            <div class="kcar-mirror"><img src="assets/khronos/09_execution_passed.webp" alt="" aria-hidden="true" loading="lazy"></div>
+          </figure>
+          <figure class="kcar-slide" data-cap-en="API warm-up — virtual users ramping from 1 to 100, bottlenecks exposed" data-cap-es="Warm-up de APIs — usuarios virtuales de 1 a 100, cuellos de botella al descubierto">
+            <div class="kcar-frame"><img src="assets/khronos/10_api_warmup_ramp.webp" alt="Khronos API warm-up ramp" loading="lazy"><span class="kcar-glare"></span></div>
+            <div class="kcar-mirror"><img src="assets/khronos/10_api_warmup_ramp.webp" alt="" aria-hidden="true" loading="lazy"></div>
+          </figure>
+          <figure class="kcar-slide" data-cap-en="Virtual devices — power on an Android emulator from the dashboard" data-cap-es="Dispositivos virtuales — encendé un emulador Android desde el panel">
+            <div class="kcar-frame"><img src="assets/khronos/13_virtual_devices.webp" alt="Khronos virtual devices panel" loading="lazy"><span class="kcar-glare"></span></div>
+            <div class="kcar-mirror"><img src="assets/khronos/13_virtual_devices.webp" alt="" aria-hidden="true" loading="lazy"></div>
+          </figure>
+          <figure class="kcar-slide" data-cap-en="Mobile flows running — live device mirror and logs, no extra tooling" data-cap-es="Flows mobile corriendo — espejo del device y logs en vivo, sin herramientas extra">
+            <div class="kcar-frame"><img src="assets/khronos/16_device_running.webp" alt="Khronos mobile device running Maestro flows" loading="lazy"><span class="kcar-glare"></span></div>
+            <div class="kcar-mirror"><img src="assets/khronos/16_device_running.webp" alt="" aria-hidden="true" loading="lazy"></div>
+          </figure>
+          <figure class="kcar-slide" data-cap-en="Reports &amp; trends — every run tracked, flaky tests flagged" data-cap-es="Reportes y tendencias — cada corrida registrada, tests flaky señalados">
+            <div class="kcar-frame"><img src="assets/khronos/12_reports.webp" alt="Khronos reports and trends" loading="lazy"><span class="kcar-glare"></span></div>
+            <div class="kcar-mirror"><img src="assets/khronos/12_reports.webp" alt="" aria-hidden="true" loading="lazy"></div>
+          </figure>
+          <figure class="kcar-slide" data-cap-en="Your whole test taxonomy — pick a suite, hit run" data-cap-es="Toda tu taxonomía de pruebas — elegí una suite y dale run">
+            <div class="kcar-frame"><img src="assets/khronos/06_test_suites.webp" alt="Khronos test suites panel" loading="lazy"><span class="kcar-glare"></span></div>
+            <div class="kcar-mirror"><img src="assets/khronos/06_test_suites.webp" alt="" aria-hidden="true" loading="lazy"></div>
+          </figure>
+        </div>
+        <button class="kcar-nav kcar-next" id="kcarNext" type="button" aria-label="Next">&#8250;</button>
+      </div>
+      <p class="kcar-cap" id="kcarCap" aria-live="polite"></p>
+      <div class="kcar-dots" id="kcarDots" role="tablist"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIME TO VALUE + WORKFLOW (moved from home) -->
+<section class="block">
+  <span class="orb orb-c f1" style="width:420px;height:420px;bottom:-150px;left:-130px"></span>
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow" data-en="Time to value" data-es="Tiempo a valor">Time to value</span>
+      <h2 data-en="From day one to <span class='grad'>guarded releases</span>" data-es="Del día uno a <span class='grad'>producción vigilada</span>">From day one to <span class="grad">guarded releases</span></h2>
+    </div>
+    <div class="tv">
+      <div class="tv-item"><span class="tv-k" data-en="Day 1" data-es="Día 1">Day 1</span><p data-en="The first tests run the same day — smoke and critical paths." data-es="Las primeras pruebas corren el mismo día — smoke y flujos críticos.">The first tests run the same day — smoke and critical paths.</p></div>
+      <div class="tv-item"><span class="tv-k" data-en="Week 1" data-es="Semana 1">Week 1</span><p data-en="A solid regression suite over your key flows, running in CI." data-es="Una suite de regresión sólida sobre tus flujos clave, corriendo en CI.">A solid regression suite over your key flows, running in CI.</p></div>
+      <div class="tv-item"><span class="tv-k" data-en="Ongoing" data-es="Continuo">Ongoing</span><p data-en="Every deploy and version is watched; self-healing keeps tests alive as the UI changes." data-es="Cada deploy y versión queda vigilada; el self-healing mantiene los tests vivos cuando la UI cambia.">Every deploy and version is watched; self-healing keeps tests alive as the UI changes.</p></div>
+    </div>
+    <div class="center cov-head"><span class="eyebrow" data-en="Fits your workflow" data-es="Encaja en tu flujo">Fits your workflow</span></div>
+    <div class="hiw">
+      <div class="step"><h3 data-en="Ticketing, wired in" data-es="Tickets integrados">Ticketing, wired in</h3><p data-en="Auto-creates bug tickets with reproduction steps and reports, straight into your ticketing system — fully adaptable to whatever tracker your team uses." data-es="Crea tickets de bug con pasos de reproducción y reportes, directo a tu sistema de tickets — totalmente adaptable a la herramienta que uses.">Auto-creates bug tickets with reproduction steps and reports, straight into your ticketing system — fully adaptable to whatever tracker your team uses.</p></div>
+      <div class="step"><h3 data-en="Self-healing" data-es="Self-healing">Self-healing</h3><p data-en="When your UI changes, tests adapt instead of breaking — so your suite keeps working release after release." data-es="Cuando tu UI cambia, los tests se adaptan en vez de romperse — para que tu suite siga funcionando release tras release.">When your UI changes, tests adapt instead of breaking — so your suite keeps working release after release.</p></div>
+      <div class="step"><h3 data-en="Adapts to your stack" data-es="Se adapta a tu stack">Adapts to your stack</h3><p data-en="We can adapt it to your team's stack — Java, C# or whatever you use — with tailored setup." data-es="Podemos adaptarla al stack de tu equipo — Java, C# o el que uses — con configuración a medida.">We can adapt it to your team's stack — Java, C# or whatever you use — with tailored setup.</p></div>
     </div>
   </div>
 </section>
 
 <!-- WHY -->
-<section class="kh-why block">
+<section class="kh-why block light">
   <div class="wrap">
     <div class="center"><span class="eyebrow" data-en="Why teams choose it" data-es="Por qué lo eligen">Why teams choose it</span></div>
     <div class="why-grid">
       <div class="why"><h4 data-en="Ship without fear" data-es="Lanzá sin miedo">Ship without fear</h4><p data-en="Every release is checked before it reaches your users. If something breaks, you know first — not your customers." data-es="Cada versión se revisa antes de llegar a tus usuarios. Si algo se rompe, te enterás vos primero — no tus clientes.">Every release is checked before it reaches your users. If something breaks, you know first — not your customers.</p></div>
-      <div class="why"><h4 data-en="AI speed, human trust" data-es="Velocidad de IA, confianza humana">AI speed, human trust</h4><p data-en="The AI does the heavy lifting fast; a real QA engineer reviews and guarantees it. Not a robot left on its own." data-es="La IA hace el trabajo pesado rápido; un ingeniero de QA real revisa y lo garantiza. No un robot dejado solo.">The AI does the heavy lifting fast; a real QA engineer reviews and guarantees it. Not a robot left on its own.</p></div>
+      <div class="why"><h4 data-en="Tool speed, expert oversight" data-es="Velocidad de herramienta, criterio experto">Tool speed, expert oversight</h4><p data-en="About 70% of the work is done by our tool; a QA engineer from our team then validates everything is right. It's the mix of an in-house tool and an outsourced QA service." data-es="Cerca del 70% del trabajo lo hace nuestra herramienta; después un SDET de nuestro equipo valida que todo esté bien. Es el mix de tener una herramienta propia y un servicio de QA tercerizado.">About 70% of the work is done by our tool; a QA engineer from our team then validates everything is right. It's the mix of an in-house tool and an outsourced QA service.</p></div>
       <div class="why"><h4 data-en="Your data stays private" data-es="Tus datos quedan privados">Your data stays private</h4><p data-en="Everything runs on our own infrastructure. Your documentation and test credentials never leave it, and are encrypted and deleted after each run." data-es="Todo corre en nuestra propia infraestructura. Tu documentación y credenciales de prueba nunca salen de ahí, y se cifran y borran después de cada corrida.">Everything runs on our own infrastructure. Your documentation and test credentials never leave it, and are encrypted and deleted after each run.</p></div>
     </div>
   </div>
@@ -196,7 +349,7 @@
           <li data-en="Curated by a real QA engineer" data-es="Curado por un ingeniero de QA real">Curated by a real QA engineer</li>
           <li data-en="Integrations with your tools (higher tiers)" data-es="Integraciones con tus herramientas (planes altos)">Integrations with your tools (higher tiers)</li>
         </ul>
-        <a class="btn solid" href="khronos-planes.html" data-en="See subscription plans" data-es="Ver planes de suscripción">See subscription plans</a>
+        <a class="btn solid" href="#planes" data-en="See subscription plans" data-es="Ver planes de suscripción">See subscription plans</a>
       </div>
       <div class="way hand">
         <div class="tag" data-en="One-time · Handover" data-es="Pago único · Llave en mano">One-time · Handover</div>
@@ -208,9 +361,142 @@
           <li data-en="Scope defined together, up front" data-es="Alcance definido juntos, de arranque">Scope defined together, up front</li>
           <li data-en="Delivered in weeks, not months" data-es="Entregado en semanas, no meses">Delivered in weeks, not months</li>
         </ul>
-        <a class="btn solid" href="khronos-planes.html#handover" data-en="See handover packages" data-es="Ver paquetes llave en mano">See handover packages</a>
+        <a class="btn solid" href="#handover" data-en="See handover packages" data-es="Ver paquetes llave en mano">See handover packages</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- PLANS (embedded) -->
+<section class="block kh-plans alt" id="planes">
+  <div class="wrap">
+    <div class="center"><span class="eyebrow" data-en="Subscription · monthly" data-es="Suscripción · mensual">Subscription · monthly</span>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,3.4vw,34px);font-weight:600;margin-top:10px" data-en="Continuous QA, hosted by us" data-es="QA continuo, hosteado por nosotros">Continuous QA, hosted by us</h2>
+      <p class="lead" data-en="Khronos tests your product on every release, curated by hand by Aypex. Move up a tier as your coverage grows." data-es="Khronos prueba tu producto en cada versión, curado a mano por Aypex. Subís de plan a medida que crece tu cobertura.">Khronos tests your product on every release, curated by hand by Aypex. Move up a tier as your coverage grows.</p></div>
+
+    <div class="khp-tiers">
+      <div class="khp-tier">
+        <div class="khp-name">Starter</div>
+        <div class="khp-price">$600<small>/mes</small></div>
+        <div class="khp-tag" data-en="Cover the critical paths without fear of breaking what works." data-es="Cubrí lo crítico sin miedo a romper lo que ya funciona.">Cover the critical paths without fear of breaking what works.</div>
+        <ul class="khp-feats">
+          <li><span data-en="Layers <b>Web + API</b>" data-es="Capas <b>Web + API</b>">Layers <b>Web + API</b></span></li>
+          <li><span data-en="<b>Smoke + Regression</b> suites" data-es="Suites <b>Smoke + Regresión</b>">Smoke + Regression suites</span></li>
+          <li><span data-en="Up to <b>~50 tests</b>" data-es="Hasta <b>~50 tests</b>">Up to ~50 tests</span></li>
+          <li><span data-en="Reports in the portal" data-es="Reportes en el portal">Reports in the portal</span></li>
+          <li class="no"><span data-en="Integrations (Jira / Slack)" data-es="Integraciones (Jira / Slack)">Integrations (Jira / Slack)</span></li>
+          <li class="no"><span data-en="Mobile · Performance" data-es="Mobile · Performance">Mobile · Performance</span></li>
+        </ul>
+        <a class="khp-cta" href="index.html#contacto" data-en="Start" data-es="Empezar">Start</a>
+      </div>
+
+      <div class="khp-tier">
+        <div class="khp-name">Growth</div>
+        <div class="khp-price">$900<small>/mes</small></div>
+        <div class="khp-tag" data-en="More coverage and your first step into mobile." data-es="Más cobertura y el primer paso a mobile.">More coverage and your first step into mobile.</div>
+        <ul class="khp-feats">
+          <li><span data-en="Everything in <b>Starter</b>" data-es="Todo lo de <b>Starter</b>">Everything in Starter</span></li>
+          <li><span data-en="+ <b>Mobile (Android)</b>" data-es="+ <b>Mobile (Android)</b>">+ Mobile (Android)</span></li>
+          <li><span data-en="+ <b>E2E</b> suites" data-es="+ Suites <b>E2E</b>">+ E2E suites</span></li>
+          <li><span data-en="Up to <b>~150 tests</b>" data-es="Hasta <b>~150 tests</b>">Up to ~150 tests</span></li>
+          <li><span data-en="<b>Slack</b> notifications" data-es="Notificaciones <b>Slack</b>">Slack notifications</span></li>
+          <li class="no"><span data-en="Jira · CI/CD · Performance" data-es="Jira · CI/CD · Performance">Jira · CI/CD · Performance</span></li>
+        </ul>
+        <a class="khp-cta" href="index.html#contacto" data-en="Choose Growth" data-es="Elegir Growth">Choose Growth</a>
+      </div>
+
+      <div class="khp-tier feat" data-badge="★">
+        <div class="khp-name">Scale</div>
+        <div class="khp-price">$1.200<small>/mes</small></div>
+        <div class="khp-tag" data-en="All layers, full integrations and the highest standard ceiling." data-es="Todas las capas, integraciones completas y el techo más alto del plan estándar.">All layers, full integrations and the highest standard ceiling.</div>
+        <ul class="khp-feats">
+          <li><span data-en="Everything in <b>Growth</b>" data-es="Todo lo de <b>Growth</b>">Everything in Growth</span></li>
+          <li><span data-en="<b>All layers</b>: Web · API · Mobile (iOS+Android) · Performance" data-es="<b>Todas las capas</b>: Web · API · Mobile (iOS+Android) · Performance">All layers</span></li>
+          <li><span data-en="Up to <b>~400 tests</b> (the ceiling)" data-es="Hasta <b>~400 tests</b> (el techo)">Up to ~400 tests</span></li>
+          <li><span data-en="<b>Jira + Slack + CI/CD</b>" data-es="<b>Jira + Slack + CI/CD</b>">Jira + Slack + CI/CD</span></li>
+          <li><span data-en="Executive reports" data-es="Reportes ejecutivos">Executive reports</span></li>
+        </ul>
+        <a class="khp-cta" href="index.html#contacto" data-en="Choose Scale" data-es="Elegir Scale">Choose Scale</a>
+      </div>
+
+      <div class="khp-tier cust">
+        <div class="khp-name">Custom</div>
+        <div class="khp-price"><span class="c" data-en="Let's talk" data-es="Hablemos">Let's talk</span></div>
+        <div class="khp-tag" data-en="Beyond the Scale ceiling — a tailored plan with direct attention." data-es="¿Superás el techo de Scale? Un plan a medida con trato directo.">Beyond the Scale ceiling — a tailored plan with direct attention.</div>
+        <ul class="khp-feats">
+          <li><span data-en="<b>Negotiated</b> test volume" data-es="Volumen de tests <b>negociado</b>">Negotiated test volume</span></li>
+          <li><span data-en="<b>Dedicated</b> QA engineer" data-es="SDET <b>dedicado</b>">Dedicated QA engineer</span></li>
+          <li><span data-en="Dedicated iOS device farm" data-es="Device farm iOS dedicada">Dedicated iOS device farm</span></li>
+          <li><span data-en="Custom SLA &amp; windows" data-es="SLA y ventanas a medida">Custom SLA &amp; windows</span></li>
+        </ul>
+        <a class="khp-cta" href="index.html#contacto" data-en="Book a call" data-es="Coordinar una charla">Book a call</a>
+      </div>
+    </div>
+    <p class="khp-note" data-en="<b>All plans are curated by hand.</b> The AI accelerates; a real engineer reviews and guarantees every suite really tests what matters." data-es="<b>Todo el SaaS es curado a mano.</b> La IA acelera; una persona revisa y garantiza que cada suite realmente pruebe lo que importa.">All plans are curated by hand.</p>
+
+    <!-- Handover -->
+    <div class="center khp-sub-h" id="handover"><span class="eyebrow" data-en="One-time · Handover" data-es="Pago único · Llave en mano">One-time · Handover</span>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,3.4vw,34px);font-weight:600;margin-top:10px" data-en="We build it and hand you the repo, in your stack" data-es="Lo construimos y te damos el repo, en tu stack">We build it and hand you the repo, in your stack</h2>
+      <p class="lead" data-en="One payment. A QA engineer from Aypex automates your app and delivers the full suite — like hiring a dev for a year, but the base is ready in weeks." data-es="Pago único. Un ingeniero de QA de Aypex automatiza tu app y te entrega la suite completa — como contratar un dev por un año, pero la base queda lista en semanas.">One payment.</p></div>
+
+    <div class="khp-hand">
+      <div class="khp-h">
+        <div class="khp-hname" data-en="Essential" data-es="Esencial">Essential</div>
+        <div class="khp-hprice">$15k<small data-en=" one-time" data-es=" único"> one-time</small></div>
+        <div class="khp-tag" data-en="Your app's critical flows, automated and delivered." data-es="Los flujos críticos de tu app, automatizados y entregados.">Your app's critical flows, automated and delivered.</div>
+        <ul class="khp-hfeats">
+          <li><span data-en="<b>1 stack</b> of your choice (language + framework)" data-es="<b>1 stack</b> a elección (lenguaje + framework)">1 stack of your choice</span></li>
+          <li><span data-en="Scope: <b>core flows</b>" data-es="Alcance: <b>flujos core</b>">Scope: core flows</span></li>
+          <li><span data-en="Web <b>or</b> API" data-es="Web <b>o</b> API">Web or API</span></li>
+          <li><span data-en="Documented repo + run guide" data-es="Repo documentado + guía de ejecución">Documented repo</span></li>
+        </ul>
+      </div>
+      <div class="khp-h mid">
+        <div class="khp-hname">Pro</div>
+        <div class="khp-hprice">$30k<small data-en=" one-time" data-es=" único"> one-time</small></div>
+        <div class="khp-tag" data-en="Broad, multi-layer coverage, ready for your CI." data-es="Cobertura amplia, multi-capa y lista para tu CI.">Broad, multi-layer coverage.</div>
+        <ul class="khp-hfeats">
+          <li><span data-en="Everything in <b>Essential</b>" data-es="Todo lo de <b>Esencial</b>">Everything in Essential</span></li>
+          <li><span data-en="<b>Web + API</b> (+ Mobile optional)" data-es="<b>Web + API</b> (+ Mobile opcional)">Web + API</span></li>
+          <li><span data-en="Smoke · Regression · <b>E2E</b>" data-es="Smoke · Regresión · <b>E2E</b>">Smoke · Regression · E2E</span></li>
+          <li><span data-en="<b>CI/CD</b> pipeline configured" data-es="Pipeline <b>CI/CD</b> configurado">CI/CD pipeline</span></li>
+          <li><span data-en="Team training" data-es="Training al equipo">Team training</span></li>
+        </ul>
+      </div>
+      <div class="khp-h">
+        <div class="khp-hname">Custom</div>
+        <div class="khp-hprice"><span style="font-size:25px;background:linear-gradient(120deg,#efd7a0,#c9a24b);-webkit-background-clip:text;background-clip:text;color:transparent" data-en="We quote it" data-es="Lo presupuestamos">We quote it</span></div>
+        <div class="khp-tag" data-en="Your whole app — scope and stack defined together, quoted per project." data-es="Tu aplicación completa — alcance y stack definidos juntos, presupuestado por proyecto.">Your whole app — quoted per project.</div>
+        <ul class="khp-hfeats">
+          <li><span data-en="Everything in <b>Pro</b>" data-es="Todo lo de <b>Pro</b>">Everything in Pro</span></li>
+          <li><span data-en="<b>Full app</b> multi-layer (Web · API · Mobile · Performance)" data-es="<b>App completa</b> multi-capa (Web · API · Mobile · Performance)">Full app multi-layer</span></li>
+          <li><span data-en="<b>100% custom</b> stack" data-es="Stack 100% <b>a medida</b>">100% custom stack</span></li>
+          <li><span data-en="All the extras that can be added" data-es="Todos los extras que se puedan sumar">All the extras</span></li>
+          <li><span data-en="Extended human follow-up" data-es="Seguimiento humano extendido">Extended human follow-up</span></li>
+          <li><span data-en="A tailored quote — no ceiling" data-es="Presupuesto a medida — sin techo">A tailored quote — no ceiling</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="khp-stack">
+      <h4 data-en="You pick the technology — we build it" data-es="Vos elegís la tecnología — nosotros la construimos">You pick the technology — we build it</h4>
+      <div class="sh" data-en="Delivered in the stack you use at home. (Your own stack adds a bit over our native one — we define it when scoping.)" data-es="La entrega sale en el stack que uses en tu casa. (Tu stack propio suma un poco sobre el nuestro nativo — lo definimos al fijar el alcance.)">Delivered in the stack you use at home.</div>
+      <div class="khp-srow">
+        <div class="khp-scol"><div class="l" data-en="Language" data-es="Lenguaje">Language</div><div class="khp-chips">
+          <span class="khp-chip">Java</span><span class="khp-chip">Python</span><span class="khp-chip">C#</span></div></div>
+        <div class="khp-scol"><div class="l" data-en="Framework" data-es="Framework">Framework</div><div class="khp-chips">
+          <span class="khp-chip">Selenium</span><span class="khp-chip">Playwright</span><span class="khp-chip">Appium</span></div></div>
+        <div class="khp-scol"><div class="l" data-en="Extras (tailored)" data-es="Extras (a medida)">Extras</div><div class="khp-chips">
+          <span class="khp-chip">TestNG</span><span class="khp-chip">Allure</span><span class="khp-chip">CI/CD</span><span class="khp-chip plus" data-en="+ what fits" data-es="+ lo que se pueda">+ what fits</span></div></div>
+      </div>
+    </div>
+
+    <div class="khp-moat">
+      <div class="mi"><svg viewBox="0 0 24 24"><path d="M12 3l7 2.8v4.7c0 4.4-3 7.4-7 8.9-4-1.5-7-4.5-7-8.9V5.8z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <div><b data-en="You keep YOUR suite, not Khronos." data-es="Te quedás con TU suite, no con Khronos.">You keep YOUR suite, not Khronos.</b>
+        <p data-en="The deliverable is your tests in your stack, ready for your team to maintain. Khronos — the factory that built them 5× faster — stays with Aypex." data-es="El entregable son tus tests en tu stack, listos para que los mantenga tu equipo. Khronos — la fábrica que los produjo 5× más rápido — queda con Aypex.">The deliverable is your tests in your stack.</p></div>
+    </div>
+    <p class="khp-note" data-en="Fixed packages from $15k; larger scopes are quoted per project. Numbers of tests and executions are suggested and adjustable. USD." data-es="Paquetes fijos desde $15k; los alcances mayores se presupuestan por proyecto. Los números de tests y ejecuciones son sugeridos y ajustables. USD.">Fixed packages from $15k; larger scopes quoted per project.</p>
   </div>
 </section>
 
@@ -221,7 +507,7 @@
     <p data-en="Tell us about your product and we'll show you exactly how Khronos would test it." data-es="Contanos sobre tu producto y te mostramos exactamente cómo Khronos lo probaría.">Tell us about your product and we'll show you exactly how Khronos would test it.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
       <a class="btn solid" href="index.html#contacto" data-en="Talk to us" data-es="Hablemos">Talk to us</a>
-      <a class="btn" href="khronos-planes.html" data-en="See plans" data-es="Ver planes">See plans</a>
+      <a class="btn" href="#planes" data-en="See plans" data-es="Ver planes">See plans</a>
     </div>
   </div>
 </section>
@@ -234,6 +520,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=20"></script>
+<script src="js/main.js?v=21"></script>
 </body>
 </html>
