@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="assets/logo-final.png">
-<link rel="stylesheet" href="css/styles.css?v=24">
+<link rel="stylesheet" href="css/styles.css?v=25">
 <style>
   /* Khronos landing — page-specific, layered on the site's styles */
   .kh-hero{position:relative;min-height:74vh;display:flex;align-items:center;text-align:center;overflow:hidden;padding:120px 0 70px;}
@@ -246,6 +246,29 @@
 <section class="block">
   <div class="wrap">
     
+  </div>
+</section>
+
+<!-- TEST TYPES + HOW MUCH (restored) -->
+<section class="block">
+  <div class="wrap">
+    <div class="center cov-head"><span class="eyebrow" data-en="Every test, tagged" data-es="Cada prueba, con su etiqueta">Every test, tagged</span></div>
+    <ul class="flist" style="max-width:720px;margin-left:auto;margin-right:auto;">
+      <li data-en="<b>Smoke</b> — Does it turn on? A quick check on every change; if it fails, nothing else runs." data-es="<b>Smoke</b> — ¿Prende? Chequeo veloz en cada cambio; si falla, no sigue nada más."><b>Smoke</b> — Does it turn on? A quick check on every change; if it fails, nothing else runs.</li>
+      <li data-en="<b>Sanity</b> — Does the thing I just touched work? A focused check, without running everything." data-es="<b>Sanity</b> — ¿Lo que acabo de tocar anda? Prueba enfocada, sin correr todo."><b>Sanity</b> — Does the thing I just touched work? A focused check, without running everything.</li>
+      <li data-en="<b>Regression</b> — Did I break something that already worked? A full sweep before a release." data-es="<b>Regression</b> — ¿Rompí algo que ya funcionaba? Barrido completo antes de un release."><b>Regression</b> — Did I break something that already worked? A full sweep before a release.</li>
+      <li data-en="<b>Unit</b> — Does each piece work on its own? The smallest parts of the code, one by one." data-es="<b>Unit</b> — ¿Cada pieza funciona sola? Las partes más chicas del código, una por una."><b>Unit</b> — Does each piece work on its own? The smallest parts of the code, one by one.</li>
+      <li data-en="<b>End-to-end (E2E)</b> — Does the whole journey work? The user from start to finish, across web, mobile and API." data-es="<b>End-to-end (E2E)</b> — ¿El recorrido completo funciona? El usuario de punta a punta, en web, mobile y API."><b>End-to-end (E2E)</b> — Does the whole journey work? The user from start to finish, across web, mobile and API.</li>
+    </ul>
+    <div class="center" style="margin-top:22px"><p class="lead" data-en="You choose what runs when: smoke on every commit, full regression every night. Khronos already knows which one's due." data-es="Vos elegís qué corre en cada momento: smoke en cada commit, regresión completa cada noche. Khronos ya sabe cuál toca.">You choose what runs when: smoke on every commit, full regression every night. Khronos already knows which one's due.</p></div>
+    <div class="center cov-head"><span class="eyebrow" data-en="How much it automates for you" data-es="Cuánto automatiza por vos">How much it automates for you</span></div>
+    <div class="cov">
+      <div class="cov-item"><b>~73%</b><span class="cov-l" data-en="Web" data-es="Web">Web</span><span class="cov-n" data-en="of the work generated" data-es="del trabajo generado">of the work generated</span></div>
+      <div class="cov-item"><b>~73%</b><span class="cov-l" data-en="Mobile · Android &amp; iOS" data-es="Mobile · Android e iOS">Mobile · Android &amp; iOS</span><span class="cov-n" data-en="of the work generated" data-es="del trabajo generado">of the work generated</span></div>
+      <div class="cov-item"><b>~100%</b><span class="cov-l" data-en="API" data-es="API">API</span><span class="cov-n" data-en="near-complete" data-es="casi completo">near-complete</span></div>
+      <div class="cov-item"><b>Beta</b><span class="cov-l" data-en="Performance" data-es="Performance">Performance</span><span class="cov-n" data-en="in testing" data-es="en pruebas">in testing</span></div>
+    </div>
+    <p class="cov-note" data-en="Typical figures, not guarantees — how much gets generated depends on your app's scope and the context you provide." data-es="Números típicos, no garantías — cuánto se genera depende del alcance de tu app y del contexto que aportes.">Typical figures, not guarantees — how much gets generated depends on your app's scope and the context you provide.</p>
   </div>
 </section>
 
@@ -520,6 +543,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=21"></script>
+<script src="js/main.js?v=22"></script>
 </body>
 </html>
