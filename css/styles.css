@@ -136,6 +136,7 @@ body.has-cursor .cursor-glow{opacity:.7;}
 section#servicios{background:radial-gradient(circle at top left,#f9d96a 0%,#f2bc2f 34%,#d89e1d 72%,#9a6410 100%);color:#2f1d03;}
 section#servicios .center h2{color:#2f1d03;}
 section#servicios .eyebrow{color:#7a4b0d;}
+section#servicios .center p.lead{color:#5a3a08;}
 section#servicios .ccard{position:relative;background:rgba(7,7,8,.88);border:1px solid rgba(154,100,16,.35);border-radius:18px;padding:34px 28px;overflow:hidden;transition:transform .45s cubic-bezier(.22,.61,.36,1),box-shadow .45s ease,border-color .45s ease;box-shadow:0 16px 40px rgba(56,28,0,.24);}
 section#servicios .ccard::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(90deg,#f2bc2f,#ffe28d 45%,#d89e1d);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .45s;pointer-events:none;}
 section#servicios .ccard:hover{transform:translateY(-7px);box-shadow:0 30px 64px rgba(56,28,0,.34);border-color:rgba(255,226,141,.6);} 
